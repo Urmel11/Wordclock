@@ -1,0 +1,10 @@
+*~
+src/**/bin/
+src/**/obj/
+output/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
