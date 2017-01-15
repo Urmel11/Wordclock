@@ -10,49 +10,25 @@ namespace Wordclock.Core.PowerManagement
 	public class PowerManager
 	{
 		private IPowerObserver _observer;
-		private Timer _timer;
-		private PowerState _currentState;
-
-		internal PowerManager(IPowerObserver observer, IPowerStore store)
+		
+		internal PowerManager(IPowerObserver observer)
 		{
 			_observer = observer;
-			Store = store;
-			_currentState = PowerState.PowerOn;
-			InitTimer();
+			PowerState = PowerState.On;
 		}
 
-		private void InitTimer()
+		public void PowerOn()
 		{
-			_timer = new Timer();
-			_timer.Interval = 5 * 1000;
-			_timer.Elapsed += TimerElapsed;
-			_timer.Enabled = true;
-			_timer.Start();
+			_observer.PowerOn();
+			PowerState = PowerState.On;
 		}
 
-		private void TimerElapsed(object sender, ElapsedEventArgs e)
+		public void PowerOff()
 		{
-			_timer.Enabled = false;
-
-			var newState = Store.GetPowerState(DateTime.Now);
-
-			if(newState != _currentState)
-			{
-				if(newState == PowerState.PowerOn)
-				{
-					_observer.PowerOn();
-				}
-				else
-				{
-					_observer.PowerOff();
-				}
-
-				_currentState = newState;
-			}
-
-			_timer.Enabled = true;
+			_observer.PowerOff();
+			PowerState = PowerState.Off;
 		}
 
-		public IPowerStore Store { get; private set; }
+		public PowerState PowerState { get; private set; }
 	}
 }

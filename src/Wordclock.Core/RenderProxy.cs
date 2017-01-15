@@ -22,7 +22,7 @@ namespace Wordclock.Core
 		{
 			_renderEngine = engine;
 			_pixelTracker = new PixelTracker();
-			_powerState = PowerState.PowerOn;
+			_powerState = PowerState.On;
 			_layoutBuilder = layoutBuilder;
 		}
 
@@ -33,7 +33,7 @@ namespace Wordclock.Core
 				//Remember the active pixels
 				_pixelTracker.Track(pixelsToRender);
 
-				if(_powerState == PowerState.PowerOn)
+				if(_powerState == PowerState.On)
 				{
 					_renderEngine.Render(pixelsToRender);
 				}
@@ -47,7 +47,7 @@ namespace Wordclock.Core
 
 		public void PowerOn()
 		{
-			_powerState = PowerState.PowerOn;
+			_powerState = PowerState.On;
 
 			Render(_pixelTracker.GetActivePixels());
 		}
@@ -63,7 +63,7 @@ namespace Wordclock.Core
 			Render(pixels);
 			_pixelTracker.IsTrackingAllowed = true;
 
-			_powerState = PowerState.PowerOff;
+			_powerState = PowerState.Off;
 		}
 	}
 }

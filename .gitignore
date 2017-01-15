@@ -3,8 +3,13 @@ src/**/bin/
 src/**/obj/
 output/
 
+/Copy.bat
+/pscp.exe
+/putty.exe
+
 # User-specific files
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
+

@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using Wordclock.Core.PowerManagement;
 
 namespace Wordclock.ManagementService
 {
@@ -11,6 +12,12 @@ namespace Wordclock.ManagementService
 	public interface IWordclockService
 	{
 		[OperationContract]
-		string TestConnect();
+		void PowerOn();
+
+		[OperationContract]
+		void PowerOff();
+
+		[OperationContract]
+		PowerState GetPowerState();
 	}
 }

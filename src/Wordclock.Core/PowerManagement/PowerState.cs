@@ -8,8 +8,8 @@ namespace Wordclock.Core.PowerManagement
 {
 	public enum PowerState
 	{
-		PowerOn = 1,
+		On = 1,
 
-		PowerOff = 2
+		Off = 2
 	}
 }

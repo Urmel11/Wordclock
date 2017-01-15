@@ -15,7 +15,6 @@ namespace Wordclock.ManagementService
 
 		public void Startup()
 		{
-			Console.WriteLine("Starte service..");
 			var machineName = Environment.MachineName;
 			var baseAddress = new Uri(String.Format("http://{0}:6840/Wordclock", machineName));
 
@@ -30,8 +29,6 @@ namespace Wordclock.ManagementService
 			_host.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
 
 			_host.Open();
-
-			Console.WriteLine("Service gestartet");
 		}
 
 		public void Shutdown()

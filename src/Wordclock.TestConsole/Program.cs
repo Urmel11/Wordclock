@@ -12,8 +12,6 @@ namespace Wordclock.TestConsole
 		{
 			try
 			{
-				//var a = new Wordclock.ManagementService.ManagementStartupCommand();
-				//a.Startup();
 				Console.WriteLine("Performing startuphandler");
 
 				Core.Wordclock.Startup(new ConsoleStartupHandler());
@@ -29,7 +27,7 @@ namespace Wordclock.TestConsole
 			Console.ReadLine();
 			Console.WriteLine("Shutdown ausführen");
 
-			//Core.Wordclock.Shutdown();
+			Core.Wordclock.Shutdown();
 
 			Console.WriteLine("Shutodown fertig");
 		}

@@ -70,7 +70,6 @@ if __name__=='__main__':
 		print "Start neopixelWebservice"
 		server.serve_forever()
 	except KeyboardInterrupt:
-		server.stop()
         self.dispose()
 print "Server beendet!"
 

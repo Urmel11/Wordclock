@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordclock.ManagementService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordclock.WSRenderEngine", "Wordclock.WSRenderEngine\Wordclock.WSRenderEngine.csproj", "{8C93EB34-4EC9-4E6A-8B2D-B042B3C2F627}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordclock", "Wordclock\Wordclock.csproj", "{7E4BFF2C-0076-48A4-8126-6AA3DBA84C19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8C93EB34-4EC9-4E6A-8B2D-B042B3C2F627}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C93EB34-4EC9-4E6A-8B2D-B042B3C2F627}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C93EB34-4EC9-4E6A-8B2D-B042B3C2F627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E4BFF2C-0076-48A4-8126-6AA3DBA84C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E4BFF2C-0076-48A4-8126-6AA3DBA84C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E4BFF2C-0076-48A4-8126-6AA3DBA84C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E4BFF2C-0076-48A4-8126-6AA3DBA84C19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

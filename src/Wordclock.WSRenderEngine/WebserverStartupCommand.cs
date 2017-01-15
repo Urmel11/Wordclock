@@ -37,26 +37,8 @@ namespace Wordclock.WSRenderEngine
 			//start.RedirectStandardError = true;
 
 			var p = Process.Start(start);
-
-			Console.WriteLine("Webserver gestartet");
-						
-			//GetOutput(p);
-		}
-
-		static void GetOutput(Process p)
-		{
-			using (var r = p.StandardOutput)
-			{
-				Console.WriteLine("output:");
-				Console.WriteLine(r?.ReadToEnd());
-			}
-
-			using (var r = p.StandardError)
-			{
-				Console.WriteLine("error:");
-				Console.WriteLine(r?.ReadToEnd());
-			}
-
+			
+			System.Threading.Thread.Sleep(5000);
 		}
 	}
 }

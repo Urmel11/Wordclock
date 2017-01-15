@@ -26,30 +26,9 @@ namespace Wordclock.Core
 			RenderEngine = proxy;
 			PluginHandler = new PluginManager(RenderEngine, new DefaultLayoutBuilder());
 
-			PowerManager = new PowerManagement.PowerManager(proxy, new PowerManagement.FixPowerStore());
+			PowerManager = new PowerManagement.PowerManager(proxy);
 
-			PluginHandler.ChangeActivePlugin<Clock>();
-
-			//XmlSerializer a = new XmlSerializer(typeof(List<PowerManagement.PowerSetting>));
-			//PowerManagement.PowerSetting setting = new PowerManagement.PowerSetting();
-
-			//setting.Weekday = DayOfWeek.Wednesday;
-			//setting.State = PowerManagement.PowerState.PowerOn;
-			//setting.From = new DateTime(1, 1, 1, 15, 0, 0);
-			//setting.To = new DateTime(1, 1, 1, 20, 0, 0);
-
-			//var v = new List<PowerManagement.PowerSetting>();
-			//v.Add(setting);
-
-			//var s = new StringBuilder();
-			//using (var w = new StringWriter(s))
-			//{
-			//	a.Serialize(w, v);
-
-			//	w.Flush();
-
-			//}
-				
+			PluginHandler.ChangeActivePlugin<Clock>();				
 		}
 
 		public static void Shutdown()
