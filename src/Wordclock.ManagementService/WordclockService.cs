@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using Wordclock.Base.SharedInterfaces;
 using Wordclock.Core.PowerManagement;
 
 namespace Wordclock.ManagementService
@@ -24,6 +25,11 @@ namespace Wordclock.ManagementService
 		public void PowerOn()
 		{
 			Core.Wordclock.PowerManager.PowerOn();
+		}
+
+		public bool IsConnectionEstablished()
+		{
+			return true;
 		}
 	}
 }

@@ -60,12 +60,6 @@
     <Compile Include="WebserviceRenderEngine.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wordclock.Base\Wordclock.Base.csproj">
-      <Project>{cbb2f677-ab68-4ee5-9901-c1311ecbb2e3}</Project>
-      <Name>Wordclock.Base</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="neopixelWebservice.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -131,6 +125,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wordclock.Shared\Wordclock.Shared.csproj">
+      <Project>{cc8f3932-b535-4b4e-9278-e78430b31c28}</Project>
+      <Name>Wordclock.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

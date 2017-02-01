@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
+using Wordclock.Base.SharedInterfaces;
 using Wordclock.Core.Startup;
 
 namespace Wordclock.ManagementService
@@ -16,6 +17,7 @@ namespace Wordclock.ManagementService
 		public void Startup()
 		{
 			var machineName = Environment.MachineName;
+			
 			var baseAddress = new Uri(String.Format("http://{0}:6840/Wordclock", machineName));
 
 			_host = new ServiceHost(typeof(WordclockService), baseAddress);
@@ -24,7 +26,7 @@ namespace Wordclock.ManagementService
 			metaData.HttpGetEnabled = true;
 
 			_host.Description.Behaviors.Add(metaData);
-			
+
 			_host.AddServiceEndpoint(typeof(IWordclockService), new BasicHttpBinding(), baseAddress);
 			_host.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
 

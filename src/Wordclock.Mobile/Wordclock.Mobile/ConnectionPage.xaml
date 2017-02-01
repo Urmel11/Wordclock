@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Wordclock.Mobile"
+             x:Class="Wordclock.Mobile.ConnectionPage">
+
+	<StackLayout Padding="50" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+		<Entry Placeholder="Adresse" x:Name="txtAddress"/>
+		<Entry Placeholder="Port" x:Name="txtPort"/>
+		<Button Text="Verbinden" Clicked="OnClick"/>
+	</StackLayout>
+
+</ContentPage>

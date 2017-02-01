@@ -2,6 +2,7 @@
 src/**/bin/
 src/**/obj/
 output/
+src/packages
 
 /Copy.bat
 /pscp.exe
