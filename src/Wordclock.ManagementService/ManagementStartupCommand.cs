@@ -5,7 +5,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
-using Wordclock.Base.SharedInterfaces;
+using Wordclock.Shared.SharedInterfaces;
 using Wordclock.Core.Startup;
 
 namespace Wordclock.ManagementService
@@ -31,12 +31,16 @@ namespace Wordclock.ManagementService
 			_host.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
 
 			_host.Open();
+
+			StartTime = DateTime.Now;
 		}
 
 		public void Shutdown()
 		{
 			_host.Close();
 		}
+
+		public static DateTime StartTime { get; private set; }
 				
 	}
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Wordclock.Base.Layout;
 using Wordclock.Base.RenderEngine;
 using Wordclock.Core.PowerManagement;
+using Wordclock.Shared.SharedInterfaces;
 
 namespace Wordclock.Core
 {

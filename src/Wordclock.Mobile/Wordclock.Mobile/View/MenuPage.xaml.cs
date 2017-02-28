@@ -13,9 +13,6 @@ namespace Wordclock.Mobile
 		public MenuPage()
 		{
 			InitializeComponent();
-
-			Children.Add(new WordclockPage());
-			Children.Add(new SettingsPage());
 		}
 	}
 }

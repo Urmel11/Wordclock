@@ -33,9 +33,9 @@ namespace Wordclock.Core.Plugin
 			_activePlugin?.AttachRenderEngine(_renderEngine);
 		}
 
-		private BasePlugin GetPlugin<T>() where T : BasePlugin
+		public T GetPlugin<T>() where T : BasePlugin
 		{
-			return _plugins.Where(x => x.GetType().Equals(typeof(T))).FirstOrDefault();
+			return (T)_plugins.Where(x => x.GetType().Equals(typeof(T))).FirstOrDefault();
 		}
 
 		private void RegisterPlugins()

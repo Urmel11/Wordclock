@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wordclock.Core.PowerManagement
+namespace Wordclock.Mobile
 {
-	public enum PowerState
+	interface IView
 	{
-		On = 1,
+		void ShowError(string message);
 
-		Off = 2
+		void ShowMessages(string message);
+		
 	}
 }

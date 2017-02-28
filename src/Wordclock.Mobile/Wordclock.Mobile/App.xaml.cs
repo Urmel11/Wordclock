@@ -13,7 +13,7 @@ namespace Wordclock.Mobile
 		{
 			InitializeComponent();
 
-			MainPage = new Wordclock.Mobile.ConnectionPage();
+			MainPage = new NavigationPage(new ConnectionPage());
 		}
 
 		protected override void OnStart()
