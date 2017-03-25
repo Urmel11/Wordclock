@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System;
 
 namespace Wordclock.Base.Layout
@@ -9,12 +8,12 @@ namespace Wordclock.Base.Layout
 	/// </summary>
 	public class Pixel : IChangeTracking
 	{
-		private Color _pixelColor;
+		private ColorSurrogate _pixelColor;
 		private bool _isChanged;
 	
 		public Pixel(int pixelID)
 		{
-			PixelColor = Color.Empty;
+			PixelColor = new ColorSurrogate();
 			PixelID = pixelID;
 			_isChanged = true;
 		}
@@ -27,12 +26,12 @@ namespace Wordclock.Base.Layout
 		/// <summary>
 		/// Gets or sets the color
 		/// </summary>
-		public Color PixelColor
+		public ColorSurrogate PixelColor
 		{
 			get { return _pixelColor; }
 			set
 			{ 
-				if(value.ToArgb() != _pixelColor.ToArgb())
+				if(!value.Equals(_pixelColor))
 				{
 					_pixelColor = value;
 					_isChanged = true;
@@ -42,7 +41,7 @@ namespace Wordclock.Base.Layout
 
 		public void Clear()
 		{
-			PixelColor = Color.Empty;
+			PixelColor = new ColorSurrogate();
 		}
 				
 		/// <summary>

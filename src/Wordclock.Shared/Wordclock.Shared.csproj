@@ -42,19 +42,15 @@
     <Compile Include="Layout\Pixel.cs" />
     <Compile Include="Layout\PixelStrip.cs" />
     <Compile Include="Layout\PluginLayout.cs" />
+    <Compile Include="Layout\PointSurrogate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderEngine\IRenderEngine.cs" />
     <Compile Include="SharedInterfaces\ClockSettings.cs" />
-    <Compile Include="SharedInterfaces\ColorSurrogate.cs" />
+    <Compile Include="Layout\ColorSurrogate.cs" />
     <Compile Include="SharedInterfaces\IWordclockService.cs" />
     <Compile Include="SharedInterfaces\PowerState.cs" />
     <Compile Include="SharedInterfaces\SettingsData.cs" />
     <Compile Include="Startup\IStartupCommand.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Drawing">
-      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Drawing.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
