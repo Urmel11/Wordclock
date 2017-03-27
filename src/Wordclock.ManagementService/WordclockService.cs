@@ -19,11 +19,12 @@ namespace Wordclock.ManagementService
 
 		public SettingsData Data()
 		{
-			var result = new SettingsData();
-
-			result.IsWordclockOn = (Core.Wordclock.PowerManager.PowerState == PowerState.On);
-			result.UpTime = DateTime.Now.Subtract(ManagementStartupCommand.StartTime);
-
+			var result = new SettingsData()
+			{
+				State = Core.Wordclock.PowerManager.PowerState,
+				UpTime = DateTime.Now.Subtract(ManagementStartupCommand.StartTime),
+				StartTime = ManagementStartupCommand.StartTime
+			};
 			return result;
 		}
 
