@@ -8,7 +8,9 @@ namespace Wordclock.Shared.SharedInterfaces
 {
 	public class SettingsData
 	{
-		public bool IsWordclockOn { get; set; }
+		public PowerState State { get; set; }
+
+		public DateTime StartTime { get; set; }
 
 		public TimeSpan UpTime { get; set; }
 	}

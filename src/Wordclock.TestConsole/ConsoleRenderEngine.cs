@@ -51,7 +51,7 @@ namespace Wordclock.TestConsole
 
 				Console.ForegroundColor = ConsoleColor.Yellow;
 
-				if(changedPixels[i].PixelColor == Color.Empty)
+				if(changedPixels[i].PixelColor.Equals(new ColorSurrogate()))
 				{
 					Console.ResetColor();
 				}

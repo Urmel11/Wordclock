@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorExtensions.cs" />
     <Compile Include="Layout\DefaultLayoutBuilder.cs" />
+    <Compile Include="PointExtensions.cs" />
     <Compile Include="PowerManagement\PixelTracker.cs" />
     <Compile Include="Plugin\BasePlugin.cs" />
     <Compile Include="Plugin\Clock\Clock.cs" />

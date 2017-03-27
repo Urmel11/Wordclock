@@ -29,7 +29,7 @@ namespace Wordclock.Core.PowerManagement
 				var ids = pixels.Select(x => x.PixelID);
 
 				_activePixels.RemoveAll(x => ids.Contains(x.PixelID));
-				_activePixels.AddRange(pixels.Where(x => x.PixelColor != Color.Empty));
+				_activePixels.AddRange(pixels.Where(x => !x.PixelColor.Equals(new ColorSurrogate())));
 			}
 		}
 

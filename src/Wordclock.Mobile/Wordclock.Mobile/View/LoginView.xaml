@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Wordclock.Mobile.Behavior"
+             x:Class="Wordclock.Mobile.View.LoginView">
+
+    <StackLayout Padding="50" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+        <Entry Placeholder="Adresse" x:Name="txtAddress" Text="{Binding Server}"/>
+        <Entry Placeholder="Port" x:Name="txtPort" Text="{Binding Port}">
+            <Entry.Behaviors>
+                <local:NumberValidatorBehavior/>
+            </Entry.Behaviors>
+        </Entry>
+        <Button Text="Verbinden" Command="{Binding Login}"/>
+    </StackLayout>
+</ContentPage>
