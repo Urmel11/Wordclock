@@ -15,9 +15,8 @@ namespace Wordclock.TestConsole
 				Console.WriteLine("Performing startuphandler");
 
 				Core.Wordclock.Startup(new ConsoleStartupHandler());
-				Console.WriteLine("Startuphandler completed");
 
-				while (true) ;
+				Console.WriteLine("Startuphandler completed");
 			}
 			catch (Exception ex)
 			{

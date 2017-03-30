@@ -50,8 +50,10 @@ namespace Wordclock.WSRenderEngine
 
 			//Transfer the changed pixels in one batch to the python webservice
 			//The layout is rendered immediately
-			RenderService.setPixelAndRender Renderer = new RenderService.setPixelAndRender();
-			Renderer.renderString = RenderOptions.TrimEnd('-');
+			var Renderer = new RenderService.setPixelAndRender()
+			{
+				renderString = RenderOptions.TrimEnd('-')
+			};
 			_application.setPixelAndRender(Renderer);
 		}
 
@@ -60,14 +62,14 @@ namespace Wordclock.WSRenderEngine
 		/// </summary>
 		private void Initialize()
 		{
-			RenderService.initialize Init = new RenderService.initialize();
-
-			Init.ledCount = "140";
-			Init.ledPin = "18";
-			Init.ledFrequence = "800000";
-			Init.ledDMA = "5";
-			Init.ledBrightness = "255";
-			
+			var Init = new RenderService.initialize()
+			{
+				ledCount = "140",
+				ledPin = "18",
+				ledFrequence = "800000",
+				ledDMA = "5",
+				ledBrightness = "255"
+			};
 			_application.initialize(Init);
 		}
 	}

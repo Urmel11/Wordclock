@@ -27,15 +27,14 @@ namespace Wordclock.WSRenderEngine
 		public void Startup()
 		{
 			Console.WriteLine("Starte Webserver");
+
+			var start = new ProcessStartInfo()
+			{
+				FileName = "python",
+				Arguments = "neopixelWebservice.py",
+				UseShellExecute = false
+			};
 			
-			var start = new ProcessStartInfo();
-
-			start.FileName = "python";
-			start.Arguments = "neopixelWebservice.py";
-			start.UseShellExecute = false;
-			//start.RedirectStandardOutput = true;
-			//start.RedirectStandardError = true;
-
 			var p = Process.Start(start);
 			
 			System.Threading.Thread.Sleep(5000);

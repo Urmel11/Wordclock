@@ -14,8 +14,8 @@ namespace Wordclock
 	{
 		public StartupHandler()
 		{
-			AddStartupCommand(new WebserverStartupCommand());
 			AddStartupCommand(new ManagementStartupCommand());
+			AddStartupCommand(new WebserverStartupCommand());
 		}
 
 		public override IRenderEngine CreateRenderEngine()

@@ -27,7 +27,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\output\release\</OutputPath>
+    <OutputPath>..\..\output\release\TestConsole\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -64,10 +64,6 @@
     <ProjectReference Include="..\Wordclock.Shared\Wordclock.Shared.csproj">
       <Project>{cc8f3932-b535-4b4e-9278-e78430b31c28}</Project>
       <Name>Wordclock.Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Wordclock.WSRenderEngine\Wordclock.WSRenderEngine.csproj">
-      <Project>{8c93eb34-4ec9-4e6a-8b2d-b042b3c2f627}</Project>
-      <Name>Wordclock.WSRenderEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
