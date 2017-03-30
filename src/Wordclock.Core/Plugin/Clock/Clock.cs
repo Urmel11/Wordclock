@@ -21,7 +21,7 @@ namespace Wordclock.Core.Plugin
 		{
 			//Use the German layout by default
 			_wordProvider = new TimeWordGerman();
-			_color = Color.Red;
+			_color = Color.White;
 			_printSuffix = true;
 
 			InitializeTimer();

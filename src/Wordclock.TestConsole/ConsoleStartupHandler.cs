@@ -16,12 +16,13 @@ namespace Wordclock.TestConsole
 		public ConsoleStartupHandler()
 		{
 			AddStartupCommand(new ManagementStartupCommand());
-			//AddStartupCommand(new WebserverStartupCommand());
+			AddStartupCommand(new WebserverStartupCommand());
 		}
 
 		public override IRenderEngine CreateRenderEngine()
 		{
-			return new ConsoleRenderEngine(new DefaultLayoutBuilder());
+			//return new ConsoleRenderEngine(new DefaultLayoutBuilder());
+			return new WebserviceRenderEngine();
 		}
 	}
 }

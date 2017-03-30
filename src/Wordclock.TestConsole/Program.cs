@@ -15,15 +15,15 @@ namespace Wordclock.TestConsole
 				Console.WriteLine("Performing startuphandler");
 
 				Core.Wordclock.Startup(new ConsoleStartupHandler());
-
 				Console.WriteLine("Startuphandler completed");
 
+				while (true) ;
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex.ToString());
 			}
-						
+				
 			Console.ReadLine();
 			Console.WriteLine("Shutdown ausführen");
 

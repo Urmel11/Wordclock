@@ -66,10 +66,10 @@ if __name__=='__main__':
 		from wsgiref.simple_server import make_server
 		soap_application = soaplib.core.Application([neopixelWebservice], 'tns')
 		wsgi_application = wsgi.Application(soap_application)
-		server = make_server('192.168.2.35', 7791, wsgi_application)
+		server = make_server('localhost', 7791, wsgi_application)
 		print "Start neopixelWebservice"
 		server.serve_forever()
 	except KeyboardInterrupt:
-        self.dispose()
+		self.dispose()
 print "Server beendet!"
 
