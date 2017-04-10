@@ -11,6 +11,6 @@ namespace Wordclock.Shared.SharedInterfaces
 	{
 		public ColorSurrogate ClockColor { get; set; }
 		
-		public bool UseSuffix { get; set; }
+		public bool ShowPrefix { get; set; }
 	}
 }

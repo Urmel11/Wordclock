@@ -4,6 +4,7 @@
              x:Class="Wordclock.Mobile.View.MainView"
 			xmlns:local="clr-namespace:Wordclock.Mobile.View">
 	<TabbedPage.Children>
+		<local:ClockView/>
 		<local:SettingsView/>
 	</TabbedPage.Children>
 </TabbedPage>

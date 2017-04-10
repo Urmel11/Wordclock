@@ -39,6 +39,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Behavior\NumberValidatorBehavior.cs" />
+    <Compile Include="Converter\ColorSurrogateToColorConverter.cs" />
     <Compile Include="Converter\PowerStateToBooleanConverter.cs" />
     <Compile Include="Converter\TimeSpanToTextConverter.cs" />
     <Compile Include="Helpers\Settings.cs" />
@@ -48,6 +49,10 @@
     <Compile Include="ServiceConnector.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="ViewModel\ClockViewModel.cs" />
+    <Compile Include="View\ClockView.xaml.cs">
+      <DependentUpon>ClockView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -56,9 +61,6 @@
     </Compile>
     <Compile Include="View\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\WordclockView.xaml.cs">
-      <DependentUpon>WordclockView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +117,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="View\WordclockView.xaml">
+    <EmbeddedResource Include="View\ClockView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

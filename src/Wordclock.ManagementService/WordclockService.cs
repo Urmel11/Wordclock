@@ -46,9 +46,16 @@ namespace Wordclock.ManagementService
 			var plugin = Core.Wordclock.PluginHandler.GetPlugin<Core.Plugin.Clock>();
 
 			result.ClockColor = plugin.GetClockColor().ToColorSurrogate();
-			result.UseSuffix = plugin.GetShowSuffix();
+			result.ShowPrefix = plugin.GetShowPrefix();
 
 			return result;
+		}
+
+		public void SetShowPrefix(bool value)
+		{
+			var plugin = Core.Wordclock.PluginHandler.GetPlugin<Core.Plugin.Clock>();
+
+			plugin.SetShowPrefix(value);
 		}
 	}
 }

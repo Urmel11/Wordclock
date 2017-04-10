@@ -20,6 +20,9 @@ namespace Wordclock.Shared.SharedInterfaces
 		void SetPowerState(PowerState state);
 
 		[OperationContract]
+		void SetShowPrefix(bool value);
+
+		[OperationContract]
 		ClockSettings GetWordclockSettings();
 	}
 }
