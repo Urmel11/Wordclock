@@ -17,5 +17,13 @@ namespace Wordclock.Mobile.View
 			BindingContext = new ClockViewModel(new MessageAlerter());
 			InitializeComponent();
 		}
+
+		private void ColorCellTapped(object sender, EventArgs e)
+		{
+			var currentColor = ((ClockViewModel)BindingContext).Settings.ClockColor;
+
+			
+			Navigation.PushModalAsync(new ColorPickerView(Color.FromRgb(currentColor.R, currentColor.G, currentColor.B)));
+		}
 	}
 }
