@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorExtensions.cs" />
     <Compile Include="ManagementStartupCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WordclockService.cs" />

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Wordclock.Mobile.Model;
 using Xamarin.Forms;
 
@@ -14,13 +15,32 @@ namespace Wordclock.Mobile.ViewModel
 	{
 		private List<ColorDefinition> _colors;
 		private Color _currentColor;
+		private string _key;
+		private IColorPickerObserver _observer;
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		public ColorPickerViewModel(Color initialColor)
+		public ColorPickerViewModel(Color initialColor, string key, IColorPickerObserver observer)
 		{
 			InitializeColorList();
 			CurrentColor = initialColor;
+			_key = key;
+			_observer = observer;
+
+			Cancel = new Command(ExecuteCancel);
+			Apply = new Command(ExecuteApply);
+
+		}
+
+		private void ExecuteCancel(object o)
+		{
+			_observer.PopPage();
+		}
+
+		private void ExecuteApply()
+		{
+			_observer.PopPage();
+			_observer.Apply(CurrentColor, _key);
 		}
 
 		private void OnPropertyChanged(string propertyName)
@@ -50,7 +70,11 @@ namespace Wordclock.Mobile.ViewModel
 				});
 			}
 		}
-				
+		
+		public ICommand Cancel { get; private set; }
+
+		public ICommand Apply { get; private set; }
+
 		public Color CurrentColor
 		{
 			get

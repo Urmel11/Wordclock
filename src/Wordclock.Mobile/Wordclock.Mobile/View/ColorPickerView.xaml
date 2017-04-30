@@ -30,8 +30,8 @@
 		</ListView>
 
 		<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-			<Button Text="Übernehmen" HorizontalOptions="FillAndExpand"/>
-			<Button Text="Abbrechen" HorizontalOptions="FillAndExpand"/>
+			<Button Text="Übernehmen" HorizontalOptions="FillAndExpand" Command="{Binding Apply}"/>
+			<Button Text="Abbrechen" HorizontalOptions="FillAndExpand" Command="{Binding Cancel}"/>
 		</StackLayout>
 		
 	</StackLayout>

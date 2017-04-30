@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using Wordclock.Base.Layout;
 
 namespace Wordclock.Shared.SharedInterfaces
 {
@@ -21,6 +22,9 @@ namespace Wordclock.Shared.SharedInterfaces
 
 		[OperationContract]
 		void SetShowPrefix(bool value);
+
+		[OperationContract]
+		void SetClockColor(ColorSurrogate color);
 
 		[OperationContract]
 		ClockSettings GetWordclockSettings();

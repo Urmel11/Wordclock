@@ -22,7 +22,7 @@
 							<ViewCell.View>
 								<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 									<Label Text="Farbe" YAlign="Center" Margin="16,0,0,0"/>
-									<BoxView x:Name="clockColor" HorizontalOptions="EndAndExpand"/>
+									<BoxView x:Name="clockColor" HorizontalOptions="EndAndExpand" Color="{Binding Settings.ClockColor, Converter={StaticResource ColorConverter}}"/>
 								</StackLayout>
 							</ViewCell.View>
 						</ViewCell>

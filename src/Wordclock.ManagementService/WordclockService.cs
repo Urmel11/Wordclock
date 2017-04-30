@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Wordclock.Shared.SharedInterfaces;
 using System.Drawing;
+using Wordclock.Base.Layout;
+using Wordclock.Core;
 
 namespace Wordclock.ManagementService
 {
@@ -56,6 +58,12 @@ namespace Wordclock.ManagementService
 			var plugin = Core.Wordclock.PluginHandler.GetPlugin<Core.Plugin.Clock>();
 
 			plugin.SetShowPrefix(value);
+		}
+
+		public void SetClockColor(ColorSurrogate newColor)
+		{
+			var plugin = Core.Wordclock.PluginHandler.GetPlugin<Core.Plugin.Clock>();
+			plugin.SetClockColor(newColor.ToColor());
 		}
 	}
 }

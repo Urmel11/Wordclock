@@ -7,7 +7,7 @@ using Wordclock.Base.Layout;
 
 namespace Wordclock.Core
 {
-	static class ColorExtensions
+	public static class ColorExtensions
 	{
 		public static System.Drawing.Color ToColor(this ColorSurrogate surrogate)
 		{

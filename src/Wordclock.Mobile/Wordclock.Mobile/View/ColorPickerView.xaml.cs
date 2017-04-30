@@ -13,9 +13,9 @@ namespace Wordclock.Mobile.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ColorPickerView : ContentPage
 	{
-		public ColorPickerView(Color initialColor)
+		public ColorPickerView(Color initialColor, string key, IColorPickerObserver observer)
 		{
-			BindingContext = new ColorPickerViewModel(initialColor);
+			BindingContext = new ColorPickerViewModel(initialColor, key, observer);
 			InitializeComponent();
 		}
 

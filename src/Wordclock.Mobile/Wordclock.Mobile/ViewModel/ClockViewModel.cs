@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wordclock.Shared.SharedInterfaces;
+using Xamarin.Forms;
+using Wordclock.Mobile.Helpers;
 
 namespace Wordclock.Mobile.ViewModel
 {
@@ -37,6 +39,20 @@ namespace Wordclock.Mobile.ViewModel
 				var instance = ServiceConnector.CreateInstance<IWordclockService>();
 
 				instance.SetShowPrefix(value);
+			}
+			catch(Exception ex)
+			{
+				_alerter.ShowError(ex);
+			}
+		}
+
+		public void SetClockColor(Color color)
+		{
+			var instance = ServiceConnector.CreateInstance<IWordclockService>();
+			
+			try
+			{
+				instance.SetClockColor(color.ToColorSurrogate());
 			}
 			catch(Exception ex)
 			{

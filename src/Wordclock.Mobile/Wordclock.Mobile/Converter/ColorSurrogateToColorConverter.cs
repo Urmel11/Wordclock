@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wordclock.Base.Layout;
 using Xamarin.Forms;
+using Wordclock.Mobile.Helpers;
 
 namespace Wordclock.Mobile.Converter
 {
@@ -15,19 +16,14 @@ namespace Wordclock.Mobile.Converter
 		{
 			var surrogate = (ColorSurrogate)value;
 
-			return Color.FromRgb(surrogate.R, surrogate.G, surrogate.B);
+			return surrogate.ToColor();
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			var color = (Color)value;
-			
-			return new ColorSurrogate()
-			{
-				R = System.Convert.ToByte(color.R),
-				G = System.Convert.ToByte(color.G),
-				B = System.Convert.ToByte(color.B)
-			};
+
+			return color.ToColorSurrogate();
 		}
 	}
 }

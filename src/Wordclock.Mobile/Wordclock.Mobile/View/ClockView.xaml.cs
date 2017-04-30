@@ -10,20 +10,41 @@ using Xamarin.Forms.Xaml;
 namespace Wordclock.Mobile.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ClockView : ContentPage
+	public partial class ClockView : ContentPage, IColorPickerObserver
 	{
+		private const string CLOCK_COLOR_KEY = "clockColor";
+
 		public ClockView()
 		{
 			BindingContext = new ClockViewModel(new MessageAlerter());
 			InitializeComponent();
 		}
 
+		public void Apply(Color selectedColor, string key)
+		{
+			switch(key)
+			{
+				case CLOCK_COLOR_KEY:
+					SetClockColor(selectedColor);
+					break;
+			}
+		}
+
+		public void PopPage()
+		{
+			Navigation.PopModalAsync();
+		}
+
+		private void SetClockColor(Color color)
+		{
+			var model = BindingContext as ClockViewModel;
+			clockColor.Color = color;
+			model.SetClockColor(color);
+		}
+
 		private void ColorCellTapped(object sender, EventArgs e)
 		{
-			var currentColor = ((ClockViewModel)BindingContext).Settings.ClockColor;
-
-			
-			Navigation.PushModalAsync(new ColorPickerView(Color.FromRgb(currentColor.R, currentColor.G, currentColor.B)));
+			Navigation.PushModalAsync(new ColorPickerView(clockColor.Color, CLOCK_COLOR_KEY, this));
 		}
 	}
 }
