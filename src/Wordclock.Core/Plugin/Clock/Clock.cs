@@ -13,7 +13,7 @@ namespace Wordclock.Core.Plugin
 		private ITimeWordProvider _wordProvider;
 		private System.Timers.Timer _timer;
 		private Color _color;
-		private bool _printSuffix;
+		private bool _printPrefix;
 
 		private int _oldMinute;
 
@@ -22,7 +22,7 @@ namespace Wordclock.Core.Plugin
 			//Use the German layout by default
 			_wordProvider = new TimeWordGerman();
 			_color = Color.White;
-			_printSuffix = true;
+			_printPrefix = true;
 
 			InitializeTimer();
 		}
@@ -106,9 +106,9 @@ namespace Wordclock.Core.Plugin
 				hour = _wordProvider.GetHour((time.Hour % 12), time.Minute);
 			}
 						
-			if(_printSuffix)
+			if(_printPrefix)
 			{
-				Layout.Matrix.SetPixelColor(_wordProvider.GetSuffix().ToPointSurrogate(), GetClockColor().ToColorSurrogate());
+				Layout.Matrix.SetPixelColor(_wordProvider.GetPrefix().ToPointSurrogate(), GetClockColor().ToColorSurrogate());
 			}
 			
 			Layout.Matrix.SetPixelColor(hour.ToPointSurrogate(), GetClockColor().ToColorSurrogate());
@@ -118,7 +118,7 @@ namespace Wordclock.Core.Plugin
 
 			if (time.Minute < 5)
 			{
-				Layout.Matrix.SetPixelColor(_wordProvider.GetPrefix().ToPointSurrogate(), GetClockColor().ToColorSurrogate());
+				Layout.Matrix.SetPixelColor(_wordProvider.GetSuffix().ToPointSurrogate(), GetClockColor().ToColorSurrogate());
 			}
 
 			Render();
@@ -148,15 +148,16 @@ namespace Wordclock.Core.Plugin
 		{
 			return (_oldMinute != timeToRender.Minute);
 		}
+		
 
-		public bool GetShowSuffix()
+		public bool GetShowPrefix()
 		{
-			return _printSuffix;
+			return _printPrefix;
 		}
 
-		public void SetShowSuffix(bool value)
+		public void SetShowPrefix(bool value)
 		{
-			_printSuffix = value;
+			_printPrefix = value;
 
 			_oldMinute = _oldMinute - 1;
 			SetTime(DateTime.Now);

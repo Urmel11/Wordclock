@@ -17,7 +17,7 @@
 			<TableView>
 				<TableView.Root>
 					<TableSection Title="Energie">
-						<SwitchCell Text="Status" On="{Binding PowerState, Converter={StaticResource PowerStateConverter}}"/>
+						<SwitchCell Text="An" On="{Binding PowerState, Converter={StaticResource PowerStateConverter}}"/>
 					</TableSection>
 					<TableSection Title="Uptime">
 						<TextCell Text="Start" Detail="{Binding Data.StartTime}"/>

@@ -186,9 +186,14 @@ namespace Wordclock.Core.Plugin
 		{
 			List<Point> result = new List<Point>();
 
-			result.Add(new Point(8,9));
-			result.Add(new Point(9,9));
-			result.Add(new Point(10,9));
+			//ES
+			result.Add(new Point(0, 0));
+			result.Add(new Point(1, 0));
+
+			//IST
+			result.Add(new Point(3, 0));
+			result.Add(new Point(4, 0));
+			result.Add(new Point(5, 0));
 
 			return result;
 		}
@@ -197,16 +202,12 @@ namespace Wordclock.Core.Plugin
 		{
 			List<Point> result = new List<Point>();
 
-			//ES
-			result.Add(new Point(0,0));
-			result.Add(new Point(1,0));
-
-			//IST
-			result.Add(new Point(3,0));
-			result.Add(new Point(4,0));
-			result.Add(new Point(5,0));
+			result.Add(new Point(8, 9));
+			result.Add(new Point(9, 9));
+			result.Add(new Point(10, 9));
 
 			return result;
+
 		}
 
 		public IEnumerable<Point> GetPast()
