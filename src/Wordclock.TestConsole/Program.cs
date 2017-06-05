@@ -12,10 +12,12 @@ namespace Wordclock.TestConsole
 		{
 			try
 			{
-				Console.WriteLine("Performing startuphandler");
-
+				Console.WriteLine("Executing startuphandler...");
+				Console.WriteLine();
+				
 				Core.Wordclock.Startup(new ConsoleStartupHandler());
 
+				Console.SetCursorPosition(0, 1);
 				Console.WriteLine("Startuphandler completed");
 			}
 			catch (Exception ex)
@@ -24,11 +26,7 @@ namespace Wordclock.TestConsole
 			}
 				
 			Console.ReadLine();
-			Console.WriteLine("Shutdown ausführen");
-
 			Core.Wordclock.Shutdown();
-
-			Console.WriteLine("Shutodown fertig");
 		}
 	}
 }
