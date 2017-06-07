@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wordclock.Base.Layout;
+﻿using Wordclock.Shared;
 using Xamarin.Forms;
 
 namespace Wordclock.Mobile.Helpers

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Wordclock.Base.Layout
+﻿namespace Wordclock.Core.Layout
 {
 	public class DefaultLayoutBuilder : ILayoutBuilder
 	{

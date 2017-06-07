@@ -21,7 +21,7 @@ namespace Wordclock.Mobile.ViewModel
 
 		private void InitializeData()
 		{
-			var instance = ServiceConnector.CreateInstance<IWordclockService>();
+			var instance = ServiceConnector.CreateInstance<IClockService>();
 			try
 			{
 				Settings = instance.GetWordclockSettings();
@@ -36,7 +36,7 @@ namespace Wordclock.Mobile.ViewModel
 		{
 			try
 			{
-				var instance = ServiceConnector.CreateInstance<IWordclockService>();
+				var instance = ServiceConnector.CreateInstance<IClockService>();
 
 				instance.SetShowPrefix(value);
 			}
@@ -48,7 +48,7 @@ namespace Wordclock.Mobile.ViewModel
 
 		public void SetClockColor(Color color)
 		{
-			var instance = ServiceConnector.CreateInstance<IWordclockService>();
+			var instance = ServiceConnector.CreateInstance<IClockService>();
 			
 			try
 			{

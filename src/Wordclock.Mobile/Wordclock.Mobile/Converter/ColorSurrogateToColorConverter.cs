@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wordclock.Base.Layout;
-using Xamarin.Forms;
 using Wordclock.Mobile.Helpers;
+using Wordclock.Shared;
+using Xamarin.Forms;
 
 namespace Wordclock.Mobile.Converter
 {

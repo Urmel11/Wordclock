@@ -19,7 +19,7 @@ namespace Wordclock.Mobile.ViewModel
 
 		private void InitializeData()
 		{
-			var instance = ServiceConnector.CreateInstance<IWordclockService>();
+			var instance = ServiceConnector.CreateInstance<ISettingsService>();
 
 			try
 			{
@@ -34,7 +34,7 @@ namespace Wordclock.Mobile.ViewModel
 
 		private void ChangePowerState(PowerState newState)
 		{
-			var instance = ServiceConnector.CreateInstance<IWordclockService>();
+			var instance = ServiceConnector.CreateInstance<ISettingsService>();
 		
 			try
 			{

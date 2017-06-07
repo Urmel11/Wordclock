@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wordclock.Base.Layout;
-using Wordclock.Base.RenderEngine;
+﻿using Wordclock.Core.Layout;
+using Wordclock.Core.RenderEngine;
 using Wordclock.Core.Startup;
-using Wordclock.ManagementService;
+using Wordclock.Core.WordclockManagement;
 
 namespace Wordclock.TestConsole
 {

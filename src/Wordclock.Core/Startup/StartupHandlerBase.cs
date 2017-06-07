@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wordclock.Base.RenderEngine;
+﻿using System.Collections.Generic;
+using Wordclock.Core.RenderEngine;
 
 namespace Wordclock.Core.Startup
 {

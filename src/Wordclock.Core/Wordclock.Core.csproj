@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,8 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorExtensions.cs" />
+    <Compile Include="Layout\AmbilightLayout.cs" />
     <Compile Include="Layout\DefaultLayoutBuilder.cs" />
-    <Compile Include="PointExtensions.cs" />
+    <Compile Include="Layout\IAmbilightLayoutBuilder.cs" />
+    <Compile Include="Layout\ILayoutBuilder.cs" />
+    <Compile Include="Layout\IPluginLayoutBuilder.cs" />
+    <Compile Include="Layout\Matrix.cs" />
+    <Compile Include="Layout\Pixel.cs" />
+    <Compile Include="Layout\PixelStrip.cs" />
+    <Compile Include="Layout\PluginLayout.cs" />
     <Compile Include="PowerManagement\PixelTracker.cs" />
     <Compile Include="Plugin\BasePlugin.cs" />
     <Compile Include="Plugin\Clock\Clock.cs" />
@@ -53,9 +61,17 @@
     <Compile Include="PowerManagement\IPowerObserver.cs" />
     <Compile Include="PowerManagement\PowerManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenderEngine\IRenderEngine.cs" />
     <Compile Include="RenderProxy.cs" />
+    <Compile Include="Startup\IStartupCommand.cs" />
     <Compile Include="Startup\StartupHandlerBase.cs" />
     <Compile Include="Wordclock.cs" />
+    <Compile Include="WordclockManagement\ClockService.cs" />
+    <Compile Include="WordclockManagement\ConnectionService.cs" />
+    <Compile Include="WordclockManagement\IWordclockService.cs" />
+    <Compile Include="WordclockManagement\ManagementStartupCommand.cs" />
+    <Compile Include="WordclockManagement\SettingsService.cs" />
+    <Compile Include="WordclockManagement\WordclockService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wordclock.Shared\Wordclock.Shared.csproj">

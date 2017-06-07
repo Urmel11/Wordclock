@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wordclock.Base.RenderEngine;
+﻿using Wordclock.Core.RenderEngine;
 using Wordclock.Core.Startup;
-using Wordclock.ManagementService;
+using Wordclock.Core.WordclockManagement;
 using Wordclock.WSRenderEngine;
 
 namespace Wordclock

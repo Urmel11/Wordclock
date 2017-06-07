@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using Wordclock.Base.Layout;
+using Wordclock.Core.Layout;
 
 namespace Wordclock.Core.Plugin
 {
@@ -108,17 +108,17 @@ namespace Wordclock.Core.Plugin
 						
 			if(_printPrefix)
 			{
-				Layout.Matrix.SetPixelColor(_wordProvider.GetPrefix().ToPointSurrogate(), GetClockColor().ToColorSurrogate());
+				Layout.Matrix.SetPixelColor(_wordProvider.GetPrefix(), GetClockColor().ToColorSurrogate());
 			}
 			
-			Layout.Matrix.SetPixelColor(hour.ToPointSurrogate(), GetClockColor().ToColorSurrogate());
-			Layout.Matrix.SetPixelColor(minutes.ToPointSurrogate(), GetClockColor().ToColorSurrogate());
+			Layout.Matrix.SetPixelColor(hour, GetClockColor().ToColorSurrogate());
+			Layout.Matrix.SetPixelColor(minutes, GetClockColor().ToColorSurrogate());
 						
 			SetDetailMinutes(time.Minute % 5);
 
 			if (time.Minute < 5)
 			{
-				Layout.Matrix.SetPixelColor(_wordProvider.GetSuffix().ToPointSurrogate(), GetClockColor().ToColorSurrogate());
+				Layout.Matrix.SetPixelColor(_wordProvider.GetSuffix(), GetClockColor().ToColorSurrogate());
 			}
 
 			Render();

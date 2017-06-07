@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using Wordclock.Base.RenderEngine;
-using Wordclock.Base.Layout;
+using Wordclock.Core.Layout;
+using Wordclock.Core.RenderEngine;
 
 namespace Wordclock.WSRenderEngine
 {

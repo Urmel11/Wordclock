@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wordclock.Base.RenderEngine;
+﻿using Wordclock.Core.Layout;
 using Wordclock.Core.Plugin;
+using Wordclock.Core.RenderEngine;
 using Wordclock.Core.Startup;
-using Wordclock.Base.Layout;
-using System.Xml.Serialization;
-using System.IO;
 
 namespace Wordclock.Core
 {

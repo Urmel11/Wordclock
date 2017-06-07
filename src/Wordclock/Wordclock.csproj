@@ -55,10 +55,6 @@
       <Project>{178505ce-89d9-45e7-bf63-3fdb5fb67a25}</Project>
       <Name>Wordclock.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wordclock.ManagementService\Wordclock.ManagementService.csproj">
-      <Project>{d407d7d0-d610-407d-ad90-b9e22bc67444}</Project>
-      <Name>Wordclock.ManagementService</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Wordclock.Shared\Wordclock.Shared.csproj">
       <Project>{cc8f3932-b535-4b4e-9278-e78430b31c28}</Project>
       <Name>Wordclock.Shared</Name>

@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wordclock.Base.Layout
+namespace Wordclock.Core.Layout
 {
-	public class PointSurrogate
+	public interface ILayoutBuilder : IAmbilightLayoutBuilder, IPluginLayoutBuilder
 	{
-		public int X { get; set; }
-		public int Y { get; set; }
 	}
 }

@@ -129,6 +129,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Wordclock.Core\Wordclock.Core.csproj">
+      <Project>{178505ce-89d9-45e7-bf63-3fdb5fb67a25}</Project>
+      <Name>Wordclock.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wordclock.Shared\Wordclock.Shared.csproj">
       <Project>{cc8f3932-b535-4b4e-9278-e78430b31c28}</Project>
       <Name>Wordclock.Shared</Name>

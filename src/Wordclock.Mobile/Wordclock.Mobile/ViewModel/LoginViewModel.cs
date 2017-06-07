@@ -61,7 +61,7 @@ namespace Wordclock.Mobile.ViewModel
 		private bool InitializeConnection()
 		{
 			ServiceConnector.Initialize(Server, Port);
-			var instance = ServiceConnector.CreateInstance<IWordclockService>();
+			var instance = ServiceConnector.CreateInstance<IConnectionService>();
 
 			try
 			{

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.ComponentModel;
-using System.Drawing;
-using Wordclock.Base.Layout;
-using Wordclock.Base.RenderEngine;
+using Wordclock.Core.Layout;
+using Wordclock.Core.RenderEngine;
+using Wordclock.Shared;
 
 namespace Wordclock.TestConsole
 {
