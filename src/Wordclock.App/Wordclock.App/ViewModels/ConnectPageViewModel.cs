@@ -1,5 +1,5 @@
 ﻿using Prism.Navigation;
-using Refractored.Xam.Settings.Abstractions;
+using Plugin.Settings.Abstractions;
 using System;
 using System.Threading.Tasks;
 using Wordclock.App.ClientProxy;
@@ -69,7 +69,7 @@ namespace Wordclock.App.ViewModels
 					SaveConnectionInformation();
 					
 					//Use absolute Uri to reset the navigation stack. So it is not possible to navigate to the ConnectPage anymore
-					await _navigationService.NavigateAsync(new Uri("http://www.wordclock.com/MenuPage", UriKind.Absolute));
+					await _navigationService.NavigateAsync(new Uri("/MenuPage", UriKind.Absolute));
 				}
 			}
 		}
