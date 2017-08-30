@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+			 xmlns:local="clr-namespace:Wordclock.App.Behaviors"
+             x:Class="Wordclock.App.Views.ConnectPage">
+
+	<AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+		<StackLayout Padding="50" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+			<Entry Placeholder="Adresse" Text="{Binding Server}" IsEnabled="{Binding IsNotBusy}"/>
+			<Entry Placeholder="Port" Text="{Binding Port}" Keyboard="Numeric" IsEnabled="{Binding IsNotBusy}">
+				<Entry.Behaviors>
+					<local:NumberValidatorBehavior/>
+				</Entry.Behaviors>
+			</Entry>
+			<Button Text="Verbinden" Command="{Binding Connect}"/>
+			<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="Black"/>
+		</StackLayout>
+	</AbsoluteLayout>
+</ContentPage>
