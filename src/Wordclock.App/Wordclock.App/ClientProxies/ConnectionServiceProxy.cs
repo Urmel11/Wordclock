@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wordclock.Shared.SharedInterfaces;
+using Wordclock.Shared.Services;
 
-namespace Wordclock.App.ClientProxy
+namespace Wordclock.App.ClientProxies
 {
 	class ConnectionServiceProxy : Proxy<IConnectionService>, IConnectionService
 	{

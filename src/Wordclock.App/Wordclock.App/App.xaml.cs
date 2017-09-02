@@ -2,10 +2,10 @@
 using Prism.Services;
 using Prism.Unity;
 using System;
-using Wordclock.App.ClientProxy;
+using Wordclock.App.ClientProxies;
 using Wordclock.App.Utils;
 using Wordclock.App.Views;
-using Wordclock.Shared.SharedInterfaces;
+using Wordclock.Shared.Services;
 using Xamarin.Forms;
 
 namespace Wordclock.App
@@ -30,6 +30,7 @@ namespace Wordclock.App
 
 			Container.RegisterType<IWordclockDialogService, WordclockDialogService>();
 			Container.RegisterType<IConnectionService, ConnectionServiceProxy>();
+			Container.RegisterType<IInfoService, InfoServiceProxy>();
 			Container.RegisterType<IEndpointConfigurationFactory, EndpointConfigurationFactory>();
 		}
 	}

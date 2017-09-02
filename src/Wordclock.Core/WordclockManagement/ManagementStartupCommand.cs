@@ -26,16 +26,12 @@ namespace Wordclock.Core.WordclockManagement
 			_host.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
 
 			_host.Open();
-
-			StartTime = DateTime.Now;
 		}
 
 		public void Shutdown()
 		{
 			_host.Close();
 		}
-
-		public static DateTime StartTime { get; private set; }
-				
+		
 	}
 }

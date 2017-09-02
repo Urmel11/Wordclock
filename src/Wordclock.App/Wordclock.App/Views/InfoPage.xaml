@@ -4,6 +4,29 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Wordclock.App.Views.InfoPage"
+			 xmlns:local="clr-namespace:Wordclock.App.Converters"
 			 Title="Info">
-  
+	
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<local:TimeSpanToTextConverter x:Key="TimeSpanConverter"/>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+	<StackLayout>
+		<ScrollView VerticalOptions="FillAndExpand">
+			<TableView>
+				<TableView.Root>
+					<TableSection Title="Uptime">
+						<TextCell Text="Start" Detail="{Binding Information.StartTime}"/>
+						<TextCell Text="Uptime" Detail="{Binding Information.UpTime, Converter={StaticResource TimeSpanConverter}}"/>
+					</TableSection>
+					<TableSection Title="Über">
+						<TextCell Text="App-Version" Detail="{Binding AppVersion}"/>
+						<TextCell Text="Wordclock-Version" Detail="{Binding Information.WordclockVersion}"/>
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+		</ScrollView>
+	</StackLayout>
 </ContentPage>

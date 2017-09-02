@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
-using Wordclock.Shared.SharedInterfaces;
+using Wordclock.Shared.Services;
 
 namespace Wordclock.Core.PowerManagement
 {

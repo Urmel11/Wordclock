@@ -1,5 +1,5 @@
 ﻿using Wordclock.Shared;
-using Wordclock.Shared.SharedInterfaces;
+using Wordclock.Shared.Services;
 
 namespace Wordclock.Core.WordclockManagement
 {

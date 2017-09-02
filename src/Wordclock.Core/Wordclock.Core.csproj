@@ -70,7 +70,7 @@
     <Compile Include="WordclockManagement\ConnectionService.cs" />
     <Compile Include="WordclockManagement\IWordclockService.cs" />
     <Compile Include="WordclockManagement\ManagementStartupCommand.cs" />
-    <Compile Include="WordclockManagement\SettingsService.cs" />
+    <Compile Include="WordclockManagement\InfoService.cs" />
     <Compile Include="WordclockManagement\WordclockService.cs" />
   </ItemGroup>
   <ItemGroup>

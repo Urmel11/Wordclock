@@ -6,7 +6,7 @@ using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wordclock.App.ClientProxy
+namespace Wordclock.App.ClientProxies
 {
 	class EndpointConfigurationFactory : IEndpointConfigurationFactory
 	{

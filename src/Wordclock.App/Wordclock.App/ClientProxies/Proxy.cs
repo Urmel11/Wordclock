@@ -5,7 +5,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wordclock.App.ClientProxy
+namespace Wordclock.App.ClientProxies
 {
 	class Proxy<T> : IDisposable
 	{

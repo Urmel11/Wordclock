@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordclock.Core", "Wordclock.Core\Wordclock.Core.csproj", "{178505CE-89D9-45E7-BF63-3FDB5FB67A25}"
 EndProject
@@ -542,5 +542,8 @@ Global
 		{CE2254A3-B57B-4974-831C-F1C38D22A7A0} = {F9F6CB7D-142D-409F-A38D-F24678729B17}
 		{B4A7F5F0-A621-4948-82D7-13F49320E631} = {45918A00-031F-4275-A127-EDE32B5D252D}
 		{5B06A0CD-FDC9-46DC-9E9E-931755EAF5F8} = {45918A00-031F-4275-A127-EDE32B5D252D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6CB255E5-20AD-43D6-BFBB-22A45B980E8C}
 	EndGlobalSection
 EndGlobal

@@ -2,9 +2,9 @@
 using Plugin.Settings.Abstractions;
 using System;
 using System.Threading.Tasks;
-using Wordclock.App.ClientProxy;
+using Wordclock.App.ClientProxies;
 using Wordclock.App.Utils;
-using Wordclock.Shared.SharedInterfaces;
+using Wordclock.Shared.Services;
 using Xamarin.Forms;
 
 namespace Wordclock.App.ViewModels

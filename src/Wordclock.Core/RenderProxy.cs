@@ -3,7 +3,7 @@ using System.ComponentModel;
 using Wordclock.Core.Layout;
 using Wordclock.Core.PowerManagement;
 using Wordclock.Core.RenderEngine;
-using Wordclock.Shared.SharedInterfaces;
+using Wordclock.Shared.Services;
 
 namespace Wordclock.Core
 {

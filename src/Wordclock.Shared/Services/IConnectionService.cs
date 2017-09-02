@@ -1,6 +1,6 @@
 ﻿using System.ServiceModel;
 
-namespace Wordclock.Shared.SharedInterfaces
+namespace Wordclock.Shared.Services
 {
 	[ServiceContract]
 	public interface IConnectionService

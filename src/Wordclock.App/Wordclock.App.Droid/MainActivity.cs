@@ -31,6 +31,7 @@ namespace Wordclock.App.Droid
 		public void RegisterTypes(IUnityContainer container)
 		{
 			container.RegisterInstance(Plugin.Settings.CrossSettings.Current);
+			container.RegisterInstance(Version.Plugin.CrossVersion.Current);
 		}
 	}
 }
