@@ -18,8 +18,8 @@
 			<Label Text="An" VerticalTextAlignment="Center"/>
 			<Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding PowerState, Converter={StaticResource PowerStateConverter}}"/>
 		</StackLayout>
-		
-		<ListView ItemsSource="{Binding PowerData}">
+
+		<ListView ItemsSource="{Binding PowerTimeSlots}">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>

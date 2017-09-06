@@ -11,7 +11,7 @@ namespace Wordclock.Shared.Services
 	public interface IPowerService
 	{
 		[OperationContract]
-		List<PowerEntry> GetPowerData();
+		List<PowerTimeSlot> GetPowerTimeSlots();
 
 		[OperationContract]
 		PowerState GetPowerState();
@@ -20,6 +20,6 @@ namespace Wordclock.Shared.Services
 		void SetPowerState(PowerState state);
 
 		[OperationContract]
-		void SavePowerData(IEnumerable<PowerEntry> data);
+		void SavePowerTimeSlots(IEnumerable<PowerTimeSlot> data);
 	}
 }

@@ -27,7 +27,7 @@ namespace Wordclock.App.ViewModels
 		{
 			try
 			{
-				PowerData = _powerService.GetPowerData();
+				PowerTimeSlots = _powerService.GetPowerTimeSlots();
 				_powerState = _powerService.GetPowerState();
 			}catch(Exception ex)
 			{
@@ -64,7 +64,7 @@ namespace Wordclock.App.ViewModels
 			}
 		}
 
-		public List<PowerEntry> PowerData { get; private set; }
+		public List<PowerTimeSlot> PowerTimeSlots { get; private set; }
 		
 	}
 }

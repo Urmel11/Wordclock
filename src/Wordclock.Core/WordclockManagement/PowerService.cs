@@ -9,7 +9,7 @@ namespace Wordclock.Core.WordclockManagement
 {
 	public partial class WordclockService : IPowerService
 	{
-		public List<PowerEntry> GetPowerData()
+		public List<PowerTimeSlot> GetPowerData()
 		{
 			throw new NotImplementedException();
 		}
@@ -19,7 +19,7 @@ namespace Wordclock.Core.WordclockManagement
 			return Wordclock.PowerManager.PowerState;
 		}
 
-		public void SavePowerData(IEnumerable<PowerEntry> data)
+		public void SavePowerData(IEnumerable<PowerTimeSlot> data)
 		{
 			throw new NotImplementedException();
 		}

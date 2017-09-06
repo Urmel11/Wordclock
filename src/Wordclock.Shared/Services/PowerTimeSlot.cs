@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Wordclock.Shared.Services
 {
-	public class PowerEntry
+	public class PowerTimeSlot
 	{
 		public DayOfWeek DayOfWeek { get; set; }
 

@@ -11,17 +11,17 @@ namespace Wordclock.App.ClientProxies
 	{
 		public PowerServiceProxy(IEndpointConfigurationFactory endpointFactory) : base(endpointFactory) { }
 
-		public List<PowerEntry> GetPowerData()
+		public List<PowerTimeSlot> GetPowerTimeSlots()
 		{
-			return new List<PowerEntry>()
+			return new List<PowerTimeSlot>()
 			{
-				new PowerEntry(){ DayOfWeek=DayOfWeek.Monday },
-				new PowerEntry(){ DayOfWeek=DayOfWeek.Tuesday },
-				new PowerEntry(){ DayOfWeek=DayOfWeek.Wednesday},
-				new PowerEntry(){ DayOfWeek=DayOfWeek.Thursday },
-				new PowerEntry(){ DayOfWeek=DayOfWeek.Friday },
-				new PowerEntry(){ DayOfWeek=DayOfWeek.Saturday },
-				new PowerEntry(){ DayOfWeek=DayOfWeek.Sunday }
+				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Monday },
+				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Tuesday },
+				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Wednesday},
+				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Thursday },
+				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Friday },
+				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Saturday },
+				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Sunday }
 			};
 		}
 
@@ -30,7 +30,7 @@ namespace Wordclock.App.ClientProxies
 			return CreateInstance().GetPowerState();
 		}
 
-		public void SavePowerData(IEnumerable<PowerEntry> data)
+		public void SavePowerTimeSlots(IEnumerable<PowerTimeSlot> data)
 		{
 			throw new NotImplementedException();
 		}
