@@ -13,7 +13,7 @@ namespace Wordclock.App
 	public partial class App : PrismApplication
 	{
 		public App(IPlatformInitializer initializer = null) : base(initializer) { }
-
+		
 		protected override void OnInitialized()
 		{
 			InitializeComponent();
@@ -31,7 +31,9 @@ namespace Wordclock.App
 			Container.RegisterType<IWordclockDialogService, WordclockDialogService>();
 			Container.RegisterType<IConnectionService, ConnectionServiceProxy>();
 			Container.RegisterType<IInfoService, InfoServiceProxy>();
+			Container.RegisterType<IPowerService, PowerServiceProxy>();
 			Container.RegisterType<IEndpointConfigurationFactory, EndpointConfigurationFactory>();
+			Container.RegisterTypeForNavigation<PowerPage>();
 		}
 	}
 }

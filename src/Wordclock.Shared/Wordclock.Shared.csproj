@@ -40,6 +40,8 @@
     <Compile Include="Services\IClockService.cs" />
     <Compile Include="Services\IConnectionService.cs" />
     <Compile Include="Services\IInfoService.cs" />
+    <Compile Include="Services\IPowerService.cs" />
+    <Compile Include="Services\PowerEntry.cs" />
     <Compile Include="Services\PowerState.cs" />
     <Compile Include="Services\InfoData.cs" />
   </ItemGroup>

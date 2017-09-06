@@ -40,7 +40,9 @@
     <Compile Include="ClientProxies\EndpointConfigurationFactory.cs" />
     <Compile Include="ClientProxies\IEndpointConfigurationFactory.cs" />
     <Compile Include="ClientProxies\InfoServiceProxy.cs" />
+    <Compile Include="ClientProxies\PowerServiceProxy.cs" />
     <Compile Include="ClientProxies\Proxy.cs" />
+    <Compile Include="Converters\PowerStateToBooleanConverter.cs" />
     <Compile Include="Converters\TimeSpanToTextConverter.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -50,11 +52,15 @@
     <Compile Include="ViewModels\ConnectPageViewModel.cs" />
     <Compile Include="ViewModels\InfoPageViewModel.cs" />
     <Compile Include="ViewModels\MenuPageViewModel.cs" />
+    <Compile Include="ViewModels\PowerPageViewModel.cs" />
     <Compile Include="Views\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PowerPage.xaml.cs">
+      <DependentUpon>PowerPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +139,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\InfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PowerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
