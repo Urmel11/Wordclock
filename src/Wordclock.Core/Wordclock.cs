@@ -1,5 +1,6 @@
 ﻿using Wordclock.Core.Layout;
 using Wordclock.Core.Plugin;
+using Wordclock.Core.PowerManagement;
 using Wordclock.Core.RenderEngine;
 using Wordclock.Core.Startup;
 
@@ -14,12 +15,13 @@ namespace Wordclock.Core
 			_startupHandler = startupHandler;
 			_startupHandler.Startup();
 
-			var proxy = new RenderProxy(_startupHandler.CreateRenderEngine(), new DefaultLayoutBuilder());
+			var proxy = new RenderManager(_startupHandler.CreateRenderEngine(), new DefaultLayoutBuilder());
 
 			RenderEngine = proxy;
 			PluginHandler = new PluginManager(RenderEngine, new DefaultLayoutBuilder());
 
-			PowerManager = new PowerManagement.PowerManager(proxy);
+			TimeSlotStore = new XMLTimeSlotStore();
+			TimeSlotManager = new TimeSlotManager(RenderEngine, TimeSlotStore, new TimeProvider());
 
 			PluginHandler.ChangeActivePlugin<Clock>();				
 		}
@@ -29,11 +31,12 @@ namespace Wordclock.Core
 			_startupHandler.Shutdown();
 		}
 
-		public static IRenderEngine RenderEngine { get; private set; }
+		public static RenderManager RenderEngine { get; private set; }
 	
 		public static PluginManager PluginHandler { get; private set; }
+			
+		public static ITimeSlotStore TimeSlotStore { get; private set; }
 
-		public static PowerManagement.PowerManager PowerManager { get; private set; }
-	
+		public static TimeSlotManager TimeSlotManager { get; private set; }
 	}
 }

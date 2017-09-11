@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Wordclock.App.Utils;
 using Wordclock.Shared.Services;
+using Xamarin.Forms;
 
 namespace Wordclock.App.ViewModels
 {
@@ -20,7 +21,21 @@ namespace Wordclock.App.ViewModels
 			_powerService = powerService;
 			_dialogService = dialogService;
 
+			SaveTimeSlotCommand = new Command(() => Save());
+
 			Refresh();
+		}
+
+		private void Save()
+		{
+			try
+			{
+				_powerService.SavePowerTimeSlots(PowerTimeSlots);
+			}catch(Exception ex)
+			{
+				_dialogService.ShowError(ex);
+			}
+			
 		}
 
 		public void Refresh()
@@ -35,6 +50,7 @@ namespace Wordclock.App.ViewModels
 			}
 			
 		}
+
 
 		private void SetPowerState(PowerState state)
 		{
@@ -63,6 +79,8 @@ namespace Wordclock.App.ViewModels
 				SetPowerState(value);
 			}
 		}
+
+		public Command SaveTimeSlotCommand { get; private set;}
 
 		public List<PowerTimeSlot> PowerTimeSlots { get; private set; }
 		

@@ -13,16 +13,7 @@ namespace Wordclock.App.ClientProxies
 
 		public List<PowerTimeSlot> GetPowerTimeSlots()
 		{
-			return new List<PowerTimeSlot>()
-			{
-				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Monday },
-				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Tuesday },
-				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Wednesday},
-				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Thursday },
-				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Friday },
-				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Saturday },
-				new PowerTimeSlot(){ DayOfWeek=DayOfWeek.Sunday }
-			};
+			return CreateInstance().GetPowerTimeSlots();
 		}
 
 		public PowerState GetPowerState()
@@ -32,7 +23,7 @@ namespace Wordclock.App.ClientProxies
 
 		public void SavePowerTimeSlots(IEnumerable<PowerTimeSlot> data)
 		{
-			throw new NotImplementedException();
+			CreateInstance().SavePowerTimeSlots(data);
 		}
 
 		public void SetPowerState(PowerState state)

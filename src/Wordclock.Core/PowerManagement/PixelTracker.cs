@@ -15,29 +15,22 @@ namespace Wordclock.Core.PowerManagement
 
 		public PixelTracker()
 		{
-			IsTrackingAllowed = true;
 			_activePixels = new List<Pixel>();
 		}
 
 		public void Track(IEnumerable<Pixel> pixels)
 		{
-			if(IsTrackingAllowed)
-			{
-				var ids = pixels.Select(x => x.PixelID);
+			var ids = pixels.Select(x => x.PixelID);
 
-				_activePixels.RemoveAll(x => ids.Contains(x.PixelID));
-				_activePixels.AddRange(pixels.Where(x => !x.PixelColor.Equals(new ColorSurrogate())));
-			}
+			_activePixels.RemoveAll(x => ids.Contains(x.PixelID));
+			_activePixels.AddRange(pixels.Where(x => !x.PixelColor.Equals(new ColorSurrogate())));
+			
 		}
 
 		public List<Pixel> GetActivePixels()
 		{
 			return _activePixels.ToList();
 		}
-
-		/// <summary>
-		/// Indicates if tracking is allowed or not
-		/// </summary>
-		public bool IsTrackingAllowed { get; set; }
+		
 	}
 }

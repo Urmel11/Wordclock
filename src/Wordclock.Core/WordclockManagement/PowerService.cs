@@ -9,31 +9,25 @@ namespace Wordclock.Core.WordclockManagement
 {
 	public partial class WordclockService : IPowerService
 	{
-		public List<PowerTimeSlot> GetPowerData()
-		{
-			throw new NotImplementedException();
-		}
-
 		public PowerState GetPowerState()
 		{
-			return Wordclock.PowerManager.PowerState;
+			return Wordclock.RenderEngine.GetPowerState();
 		}
 
-		public void SavePowerData(IEnumerable<PowerTimeSlot> data)
+		public List<PowerTimeSlot> GetPowerTimeSlots()
 		{
-			throw new NotImplementedException();
+			return Wordclock.TimeSlotStore.GetTimeSlots();
+		}
+		
+
+		public void SavePowerTimeSlots(IEnumerable<PowerTimeSlot> data)
+		{
+			Wordclock.TimeSlotStore.SaveTimeSlots(data);
 		}
 
 		public void SetPowerState(PowerState state)
 		{
-			if(state == PowerState.On)
-			{
-				Wordclock.PowerManager.PowerOn();
-			}
-			else
-			{
-				Wordclock.PowerManager.PowerOff();
-			}
+			Wordclock.RenderEngine.SetPowerState(state);
 		}
 	}
 }

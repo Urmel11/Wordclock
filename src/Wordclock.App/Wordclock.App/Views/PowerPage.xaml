@@ -5,11 +5,12 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Wordclock.App.Views.PowerPage"
 			 xmlns:local="clr-namespace:Wordclock.App.Converters"
-			 Title="Powermanagement">
+			 Title="Zeitschaltung">
 
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<local:PowerStateToBooleanConverter x:Key="PowerStateConverter"/>
+			<local:DayOfWeekToTextConverter x:Key="DayOfWeekConverter"/>
 		</ResourceDictionary>
 	</ContentPage.Resources>
 
@@ -24,17 +25,17 @@
 				<DataTemplate>
 					<ViewCell>
 						<StackLayout Orientation="Horizontal" Padding="20,0,0,0">
-							<Label WidthRequest="80" Text="{Binding Test}" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
-							<TimePicker />
+							<Label WidthRequest="80" Text="{Binding DayOfWeek, Converter={StaticResource DayOfWeekConverter}}" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+							<TimePicker Time="{Binding StarTime}"/>
 							<Label Text=" - " VerticalTextAlignment="Center"/>
-							<TimePicker />
+							<TimePicker Time="{Binding EndTime}"/>
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
 
-		<Button Text="Speichern" HorizontalOptions="FillAndExpand"/>
+		<Button Text="Speichern" HorizontalOptions="FillAndExpand" Command="{Binding SaveTimeSlotCommand}"/>
 	</StackLayout>
 	
 </ContentPage>

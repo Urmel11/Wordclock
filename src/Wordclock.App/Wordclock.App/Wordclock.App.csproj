@@ -42,6 +42,7 @@
     <Compile Include="ClientProxies\InfoServiceProxy.cs" />
     <Compile Include="ClientProxies\PowerServiceProxy.cs" />
     <Compile Include="ClientProxies\Proxy.cs" />
+    <Compile Include="Converters\DayOfWeekToTextConverter.cs" />
     <Compile Include="Converters\PowerStateToBooleanConverter.cs" />
     <Compile Include="Converters\TimeSpanToTextConverter.cs" />
     <Compile Include="Helpers\Settings.cs" />
