@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Wordclock.App.Views.ColorPickerPage">
+
+	<StackLayout>
+		<BoxView VerticalOptions="FillAndExpand" Color="{Binding PickerColor.Color}"/>
+
+		<Label Text="{Binding PickerColor.Red, StringFormat='Rot = {0:F2}'}"/>
+		<Slider Minimum="0" Maximum="1" Value="{Binding PickerColor.Red, Mode=TwoWay}"/>
+
+		<Label Text="{Binding PickerColor.Green, StringFormat='Grün = {0:F2}'}"/>
+		<Slider Minimum="0" Maximum="1" Value="{Binding PickerColor.Green, Mode=TwoWay}"/>
+
+		<Label Text="{Binding PickerColor.Blue, StringFormat='Blau = {0:F2}'}"/>
+		<Slider Minimum="0" Maximum="1" Value="{Binding PickerColor.Blue, Mode=TwoWay}"/>
+
+		<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+			<Button Text="Übernehmen" HorizontalOptions="FillAndExpand" Command="{Binding ApplyCommand}"/>
+			<Button Text="Abbrechen" HorizontalOptions="FillAndExpand" Command="{Binding CancelCommand}"/>
+		</StackLayout>
+	</StackLayout>
+	
+</ContentPage>

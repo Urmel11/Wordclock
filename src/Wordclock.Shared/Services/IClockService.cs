@@ -12,6 +12,9 @@ namespace Wordclock.Shared.Services
 		[OperationContract]
 		void SetShowPrefix(bool value);
 
+		[OperationContract]
+		bool GetShowPrefix();
+
 		/// <summary>
 		/// Sets the color of the clock
 		/// </summary>
@@ -19,11 +22,12 @@ namespace Wordclock.Shared.Services
 		[OperationContract]
 		void SetClockColor(ColorSurrogate color);
 
+
 		/// <summary>
-		/// Returns the settings of the clock
+		/// Returns the color of the clock
 		/// </summary>
 		/// <returns></returns>
 		[OperationContract]
-		ClockSettings GetWordclockSettings();
+		ColorSurrogate GetClockColor();
 	}
 }

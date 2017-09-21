@@ -8,6 +8,7 @@
 
 	
 	<TabbedPage.Children>
+		<local:ClockPage/>
 		<local:PowerPage/>
 		<local:InfoPage/>
 	</TabbedPage.Children>
