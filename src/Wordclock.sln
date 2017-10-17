@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordclock.Core", "Wordclock.Core\Wordclock.Core.csproj", "{178505CE-89D9-45E7-BF63-3FDB5FB67A25}"
 EndProject
@@ -20,6 +20,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordclock", "Wordclock\Wordclock.csproj", "{7C12D126-08FF-438A-80D9-F5387F317C08}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordclock.App", "Wordclock.App\Wordclock.App\Wordclock.App.csproj", "{B4A7F5F0-A621-4948-82D7-13F49320E631}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7C12D126-08FF-438A-80D9-F5387F317C08} = {7C12D126-08FF-438A-80D9-F5387F317C08}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordclock.App.Droid", "Wordclock.App\Wordclock.App.Droid\Wordclock.App.Droid.csproj", "{5B06A0CD-FDC9-46DC-9E9E-931755EAF5F8}"
 EndProject

@@ -37,6 +37,8 @@ namespace Wordclock.App
 			Container.RegisterTypeForNavigation<ClockPage>();
 			Container.RegisterType<IClockService, ClockServiceProxy>();
 			Container.RegisterTypeForNavigation<ColorPickerPage>();
+			Container.RegisterType<IUpdateService, UpdateServiceProxy>();
+			Container.RegisterType<IResourceService, EmbeddedResourceService>();
 		}
 	}
 }

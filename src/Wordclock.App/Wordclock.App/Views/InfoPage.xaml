@@ -24,6 +24,15 @@
 					<TableSection Title="Über">
 						<TextCell Text="App-Version" Detail="{Binding AppVersion}"/>
 						<TextCell Text="Wordclock-Version" Detail="{Binding Information.WordclockVersion}"/>
+
+						<ViewCell>
+							<ViewCell.View>
+								<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+									<Button Text="Aktualisieren"  Command="{Binding Transfer}"/>
+								</StackLayout>
+							</ViewCell.View>
+						</ViewCell>
+						
 					</TableSection>
 				</TableView.Root>
 			</TableView>

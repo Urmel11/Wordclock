@@ -43,6 +43,7 @@
     <Compile Include="ClientProxies\InfoServiceProxy.cs" />
     <Compile Include="ClientProxies\PowerServiceProxy.cs" />
     <Compile Include="ClientProxies\Proxy.cs" />
+    <Compile Include="ClientProxies\UpdateServiceProxy.cs" />
     <Compile Include="Converters\ColorSurrogateToColorConverter.cs" />
     <Compile Include="Converters\DayOfWeekToTextConverter.cs" />
     <Compile Include="Converters\PowerStateToBooleanConverter.cs" />
@@ -51,7 +52,9 @@
     <Compile Include="Models\ColorPickerColor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ColorExtensions.cs" />
+    <Compile Include="Utils\EmbeddedResourceService.cs" />
     <Compile Include="Utils\IRefreshable.cs" />
+    <Compile Include="Utils\IResourceService.cs" />
     <Compile Include="Utils\IWordclockDialogService.cs" />
     <Compile Include="Utils\WordclockDialogService.cs" />
     <Compile Include="ViewModels\ClockPageViewModel.cs" />
@@ -174,6 +177,10 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EmbeddedResources\*.*" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -182,6 +189,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>xcopy /E /Y "$(OutDir)..\Wordclock\*.*" "$(ProjectDir)EmbeddedResources\"</PreBuildEvent>
+  </PropertyGroup>
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

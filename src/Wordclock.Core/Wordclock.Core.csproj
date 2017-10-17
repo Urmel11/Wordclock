@@ -77,6 +77,7 @@
     <Compile Include="WordclockManagement\ManagementStartupCommand.cs" />
     <Compile Include="WordclockManagement\InfoService.cs" />
     <Compile Include="WordclockManagement\PowerService.cs" />
+    <Compile Include="WordclockManagement\UpdateService.cs" />
     <Compile Include="WordclockManagement\WordclockService.cs" />
   </ItemGroup>
   <ItemGroup>

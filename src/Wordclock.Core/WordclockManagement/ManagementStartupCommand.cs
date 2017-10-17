@@ -22,7 +22,11 @@ namespace Wordclock.Core.WordclockManagement
 
 			_host.Description.Behaviors.Add(metaData);
 
-			_host.AddServiceEndpoint(typeof(IWordclockService), new BasicHttpBinding(), baseAddress);
+			var binding = new BasicHttpBinding();
+			//Increase message size to receive data from the update service
+			binding.MaxReceivedMessageSize = 5 * 1024 * 1024;
+			
+			_host.AddServiceEndpoint(typeof(IWordclockService), binding, baseAddress);
 			_host.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
 
 			_host.Open();
