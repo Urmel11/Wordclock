@@ -58,6 +58,8 @@ namespace Wordclock.App.ViewModels
 				var resources = _resourceService.GetEmbeddedResources();
 				
 				_updateService.TransferContent(resources, true);
+
+				_dialogService.ShowInfo("Bitte starten Sie die Wordclock neu, damit die Softwareaktualisierung wirksam wird.");
 			}
 			catch (Exception ex)
 			{

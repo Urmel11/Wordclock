@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -11,9 +12,11 @@ namespace Wordclock.Core.PowerManagement
 {
 	class XMLTimeSlotStore : ITimeSlotStore
 	{
-		private const string CONFIG_FILENAME = "TimeSlotConfig.xml";
 		private List<PowerTimeSlot> _timeSlots;
 		private ITimeSlotStoreObserver _observer;
+
+		private const string FILE_NAME = "TimeSlotConfig.xml";
+		private const string SUB_DIRECTORY = "data";
 		
 		/// <summary>
 		/// Returns all time slots
@@ -49,7 +52,7 @@ namespace Wordclock.Core.PowerManagement
 		{
 			List<PowerTimeSlot> result;
 
-			if (IsConfiFileExisting())
+			if (IsConfigFileExisting())
 			{
 				result = ReadFromFile();
 			}
@@ -64,7 +67,7 @@ namespace Wordclock.Core.PowerManagement
 		private List<PowerTimeSlot> ReadFromFile()
 		{
 			var serializer = new XmlSerializer(typeof(List<PowerTimeSlot>));
-			using (var reader = new StreamReader(CONFIG_FILENAME))
+			using (var reader = new StreamReader(GetFilePath()))
 			{
 				var result = serializer.Deserialize(reader);
 				reader.Close();
@@ -75,8 +78,10 @@ namespace Wordclock.Core.PowerManagement
 
 		private void SaveToFile(IEnumerable<PowerTimeSlot> timeSlotsToSave)
 		{
+			EnsureConfigDirectoryExist();
+
 			var serializer = new XmlSerializer(typeof(List<PowerTimeSlot>));
-			using (var writer = new StreamWriter(CONFIG_FILENAME))
+			using (var writer = new StreamWriter(GetFilePath()))
 			{
 				serializer.Serialize(writer, timeSlotsToSave.ToList());
 				writer.Flush();
@@ -84,9 +89,22 @@ namespace Wordclock.Core.PowerManagement
 			}
 		}
 
-		private bool IsConfiFileExisting()
+		private void EnsureConfigDirectoryExist()
 		{
-			return System.IO.File.Exists(CONFIG_FILENAME);
+			if(IsConfigDirectoryExisting() == false)
+			{
+				System.IO.Directory.CreateDirectory(GetDirectoryPath());
+			}
+		}
+
+		private bool IsConfigFileExisting()
+		{
+			return System.IO.File.Exists(GetFilePath());
+		}
+
+		private bool IsConfigDirectoryExisting()
+		{
+			return Directory.Exists(GetDirectoryPath());
 		}
 
 		private List<PowerTimeSlot> GetDefaultTimeSlots()
@@ -107,6 +125,16 @@ namespace Wordclock.Core.PowerManagement
 		private void NotifyStoreValuesChanged()
 		{
 			_observer?.StoreValuesChanged();
+		}
+
+		private string GetFilePath()
+		{			
+			return System.IO.Path.Combine(SUB_DIRECTORY, FILE_NAME);
+		}
+		
+		private string GetDirectoryPath()
+		{
+			return SUB_DIRECTORY;
 		}
 
 		public void RegisterForStoreValuesChanged(ITimeSlotStoreObserver observer)
