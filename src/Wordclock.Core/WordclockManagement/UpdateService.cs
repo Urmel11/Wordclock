@@ -53,8 +53,11 @@ namespace Wordclock.Core.WordclockManagement
 		public bool IsUpdateRequired(string newVersion)
 		{
 			var currentVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-			
-			return !(currentVersion == newVersion);
+
+			var newVersionMajor = newVersion.Split('.').First();
+			var currentVersionMajor = currentVersion.Split('.').First();
+
+			return (currentVersionMajor != newVersionMajor);
 		}
 	}
 }

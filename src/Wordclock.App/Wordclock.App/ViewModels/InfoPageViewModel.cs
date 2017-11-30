@@ -59,7 +59,7 @@ namespace Wordclock.App.ViewModels
 				
 				_updateService.TransferContent(resources, true);
 
-				_dialogService.ShowInfo("Bitte starten Sie die Wordclock neu, damit die Softwareaktualisierung wirksam wird.");
+				_dialogService.ShowInfo("Bitte starte die Wordclock neu, damit die Softwareaktualisierung wirksam wird.");
 			}
 			catch (Exception ex)
 			{

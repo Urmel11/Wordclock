@@ -9,5 +9,4 @@ if [ -d "update" ]; then
 	cp update/* .
 fi
 
-#/usr/bin/mono "${BASH_SOURCE[0]}/bin/Wordclock.exe"
 /usr/bin/mono "Wordclock.exe" &
