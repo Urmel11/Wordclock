@@ -1,6 +1,12 @@
-#chmod +x install
 apt-get update
 apt-get upgrade
 apt-get install build-essential python-dev python-lxml
 apt-get install python-pip python-scipy scons swig
 apt-get install mono-complete
+cd rpi_ws281x
+scons
+cd python
+python psetup.py install
+cd ../..
+cd soaplib
+python setup.py install
