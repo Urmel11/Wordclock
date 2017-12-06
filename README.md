@@ -10,12 +10,14 @@ It is possible to control the clock with a Xamarin.Forms mobile app.
 
 1. Required tools
 The Wordclock uses some 3rd party components. Therefore you can use following commands to install the tools:
+    
     sudo apt-get install build-essential python-dev python-lxml
     sudo apt-get install python-pip python-scipy scons swig
     sudo apt-get install mono-complete
 
 2. Build required 3rd party components
 ToDo: Complete paragraph
+
     cd rpi_ws281x
     scons
     cd python
@@ -32,6 +34,7 @@ Rebuild the whole solution.
 4. Copy Wordclock
 The Wordclock app on the Raspberry is located under /usr/local/wordclock.
 This directory needs to be created first:
+
     sudo mkdir /usr/local/wordclock
     sudo chown pi /usr/local/wordclock
 	
@@ -40,8 +43,8 @@ Use the file "install/copyWordclock.bat".
 	
 The Wordclock app starts automatically after a reboot.
 This is done with cronjobs.
+    
     cd /usr/local/wordclock
-
     sudo crontab -l > tempCron
     sudo echo "@reboot cd /usr/local/wordclock && /bin/bash /usr/local/wordclock/start.sh &" >> tempCron
     sudo crontab tempCron
@@ -50,5 +53,6 @@ This is done with cronjobs.
 5. Make start.sh executable
 The cronjob will execute the file "start.sh".
 Therefore this file must be marked with the executable flag.
+    
     cd /usr/local/wordclock
     sudo chmod +x start.sh
