@@ -17,7 +17,7 @@ sudo apt-get install python-pip python-scipy scons swig
 sudo apt-get install mono-complete
 ```
 
-2. Build required 3rd party components
+###### 2. Build required 3rd party components
 
 ToDo: Complete paragraph
 ```
@@ -30,13 +30,13 @@ cd soaplib
 python setup.py install
 ```
 
-3. Build Wordclock
+###### 3. Build Wordclock
 
 Now it is time to build the heart of the Wordclock.
 Open the VS-Solution and ensure that the release build flavor is selected.
 Rebuild the whole solution.
 
-4. Copy Wordclock
+###### 4. Copy Wordclock
 
 The Wordclock app on the Raspberry is located under /usr/local/wordclock.
 This directory needs to be created first:
@@ -57,7 +57,7 @@ sudo crontab tempCron
 sudo rm tempCron
 ```
 
-5. Make start.sh executable
+###### 5. Make start.sh executable
 
 The cronjob will execute the file "start.sh".
 Therefore this file must be marked with the executable flag.
