@@ -8,7 +8,7 @@ It is possible to control the clock with a Xamarin.Forms mobile app.
 
 ## Installation Guide
 
-######1. Required tools
+###### 1. Required tools
 
 The Wordclock uses some 3rd party components. Therefore you can use following commands to install the tools:
 ```
