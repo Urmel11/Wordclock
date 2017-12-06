@@ -17,14 +17,15 @@ The Wordclock uses some 3rd party components. Therefore you can use following co
 
 2. Build required 3rd party components
 ToDo: Complete paragraph
-
-    cd rpi_ws281x
-    scons
-    cd python
-    python psetup.py install
-    cd ../..
-    cd soaplib
-    python setup.py install
+```
+cd rpi_ws281x
+scons
+cd python
+python psetup.py install
+cd ../..
+cd soaplib
+python setup.py install
+```
 
 3. Build Wordclock
 Now it is time to build the heart of the Wordclock.
