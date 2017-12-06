@@ -1,9 +1,0 @@
-mkdir /usr/local/wordclock
-chown pi /usr/local/wordclock
-
-cd /usr/local/wordclock
-
-crontab -l > tempCron
-echo "@reboot cd /usr/local/wordclock && /bin/bash /usr/local/wordclock/start.sh &" >> tempCron
-crontab tempCron
-rm tempCron
