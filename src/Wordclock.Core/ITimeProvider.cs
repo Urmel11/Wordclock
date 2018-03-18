@@ -8,7 +8,6 @@ namespace Wordclock.Core
 {
 	public interface ITimeProvider
 	{
-		jk
 		DateTime GetDateTime();
 	}
 }
