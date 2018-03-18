@@ -65,3 +65,8 @@ Therefore this file must be marked with the executable flag.
 cd /usr/local/wordclock
 sudo chmod +x start.sh
 ```
+
+## Build & Test Status
+|    | AnyCPU Release  |
+|:---|----------------:|
+|**MSBuild**|[![Build Status](https://hidu.visualstudio.com/_apis/public/build/definitions/{guid}/{id}/badge)](https://hidu.visualstudio.com/Wordclock/_build/index?definitionId=2)
