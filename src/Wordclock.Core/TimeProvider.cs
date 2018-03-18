@@ -9,7 +9,7 @@ namespace Wordclock.Core
 	class TimeProvider : ITimeProvider
 	{
 		public DateTime GetDateTime()
-		{1k
+		{
 			return DateTime.Now;
 		}
 	}
