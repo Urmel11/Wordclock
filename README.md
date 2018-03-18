@@ -69,4 +69,4 @@ sudo chmod +x start.sh
 ## Build & Test Status
 |    | AnyCPU Release  |
 |:---|----------------:|
-|**MSBuild**|[![Build Status](https://hidu.visualstudio.com/_apis/public/build/definitions/{guid}/{id}/badge)](https://hidu.visualstudio.com/Wordclock/_build/index?definitionId=2)
+|**MSBuild**|[![Build Status](https://hidu.visualstudio.com/_apis/public/build/definitions/1849ce58-018d-4889-97e2-cc20251f1722/2/badge)](https://hidu.visualstudio.com/Wordclock/_build/index?definitionId=2)
