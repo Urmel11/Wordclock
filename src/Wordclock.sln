@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordclock.TestConsole", "Wo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordclock.WSRenderEngine", "Wordclock.WSRenderEngine\Wordclock.WSRenderEngine.csproj", "{8C93EB34-4EC9-4E6A-8B2D-B042B3C2F627}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordclock.Shared", "Wordclock.Shared\Wordclock.Shared.csproj", "{CC8F3932-B535-4B4E-9278-E78430B31C28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wordclock.Shared", "Wordclock.Shared\Wordclock.Shared.csproj", "{CC8F3932-B535-4B4E-9278-E78430B31C28}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordclock", "Wordclock\Wordclock.csproj", "{7C12D126-08FF-438A-80D9-F5387F317C08}"
 EndProject
