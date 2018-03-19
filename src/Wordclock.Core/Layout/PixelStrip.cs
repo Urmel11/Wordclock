@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel;
-using Wordclock.Shared;
+using System.Drawing;
 
 namespace Wordclock.Core.Layout
 {
@@ -25,7 +25,7 @@ namespace Wordclock.Core.Layout
 		/// Sets the color on all pixels in the strip
 		/// </summary>
 		/// <param name="newColor">Color to set</param>
-		public void ChangeColor(ColorSurrogate newColor)
+		public void ChangeColor(Color newColor)
 		{
 			foreach(var pixel in _strip)
 			{

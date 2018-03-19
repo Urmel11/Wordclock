@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using Wordclock.Core.Layout;
 using Wordclock.Shared;
@@ -23,8 +24,7 @@ namespace Wordclock.Core.PowerManagement
 			var ids = pixels.Select(x => x.PixelID);
 
 			_activePixels.RemoveAll(x => ids.Contains(x.PixelID));
-			_activePixels.AddRange(pixels.Where(x => !x.PixelColor.Equals(new ColorSurrogate())));
-			
+			_activePixels.AddRange(pixels.Where(x => !x.PixelColor.Equals(Color.Empty)));
 		}
 
 		public List<Pixel> GetActivePixels()

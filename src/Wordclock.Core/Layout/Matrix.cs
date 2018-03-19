@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
-using Wordclock.Shared;
 
 namespace Wordclock.Core.Layout
 {
@@ -45,7 +44,7 @@ namespace Wordclock.Core.Layout
 		/// <param name="x"></param>
 		/// <param name="y"></param>
 		/// <param name="newColor"></param>
-		public void SetPixelColor(int x, int y, ColorSurrogate newColor)
+		public void SetPixelColor(int x, int y, Color newColor)
 		{
 			if ((x >= 0 && x < Width) && (y >= 0 && y < Height))
 			{
@@ -58,7 +57,7 @@ namespace Wordclock.Core.Layout
 		/// </summary>
 		/// <param name="points"></param>
 		/// <param name="color"></param>
-		public void SetPixelColor(IEnumerable<Point> points, ColorSurrogate color)
+		public void SetPixelColor(IEnumerable<Point> points, Color color)
 		{
 			foreach (var p in points)
 			{

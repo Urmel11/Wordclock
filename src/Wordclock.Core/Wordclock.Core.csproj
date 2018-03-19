@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorExtensions.cs" />
     <Compile Include="ITimeProvider.cs" />
     <Compile Include="Layout\AmbilightLayout.cs" />
     <Compile Include="Layout\DefaultLayoutBuilder.cs" />

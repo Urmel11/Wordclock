@@ -1,4 +1,5 @@
 ﻿using System.ServiceModel;
+using System.Drawing;
 
 namespace Wordclock.Shared.Services
 {
@@ -20,7 +21,7 @@ namespace Wordclock.Shared.Services
 		/// </summary>
 		/// <param name="color"></param>
 		[OperationContract]
-		void SetClockColor(ColorSurrogate color);
+		void SetClockColor(Color color);
 
 
 		/// <summary>
@@ -28,6 +29,6 @@ namespace Wordclock.Shared.Services
 		/// </summary>
 		/// <returns></returns>
 		[OperationContract]
-		ColorSurrogate GetClockColor();
+		Color GetClockColor();
 	}
 }
