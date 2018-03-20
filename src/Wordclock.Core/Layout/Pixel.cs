@@ -10,13 +10,12 @@ namespace Wordclock.Core.Layout
 	public class Pixel : IChangeTracking
 	{
 		private Color _pixelColor;
-		private bool _isChanged;
-	
+
 		public Pixel(int pixelID)
 		{
-			PixelColor = Color.Empty;
+			Clear();
 			PixelID = pixelID;
-			_isChanged = true;
+			IsChanged = true;
 		}
 		/// <summary>
 		/// ID of the pixel 
@@ -35,7 +34,7 @@ namespace Wordclock.Core.Layout
 				if(!value.Equals(_pixelColor))
 				{
 					_pixelColor = value;
-					_isChanged = true;
+					IsChanged = true;
 				}
 			}
 		}
@@ -44,21 +43,18 @@ namespace Wordclock.Core.Layout
 		{
 			PixelColor = Color.Empty;
 		}
-				
+
 		/// <summary>
 		/// Indicates if the object changed
 		/// </summary>
-		public bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-	
+		public bool IsChanged { get; private set; }
+
 		/// <summary>
 		/// Accept all the changes
 		/// </summary>
 		public void AcceptChanges()
 		{
-			_isChanged = false;
+			IsChanged = false;
 		}
 	}
 }
