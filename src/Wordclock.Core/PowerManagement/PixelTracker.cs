@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Linq;
 using Wordclock.Core.Layout;
-using Wordclock.Shared;
 
 namespace Wordclock.Core.PowerManagement
 {

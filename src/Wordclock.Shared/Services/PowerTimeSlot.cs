@@ -63,14 +63,19 @@ namespace Wordclock.Shared.Services
 		}
 
 		/// <summary>
-		/// Returns a value which indcates if the given time span is between StarTime and EndTime
+		/// Returns a value which indcates if the date is in the time slot
 		/// </summary>
 		/// <param name="time"></param>
 		/// <returns></returns>
-		public bool IsTimeInRange(TimeSpan time)
+		public bool IsTimeInTimeSlot(DateTime time)
 		{
-			return time.TotalSeconds >= StarTime.TotalSeconds && 
-					time.TotalSeconds <= EndTime.TotalSeconds;
+			if(DayOfWeek == time.DayOfWeek)
+			{
+				return time.TimeOfDay.TotalSeconds >= StarTime.TotalSeconds &&
+					time.TimeOfDay.TotalSeconds <= EndTime.TotalSeconds;
+			}
+
+			return false;
 		}
 	}
 }

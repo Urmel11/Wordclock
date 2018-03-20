@@ -3,6 +3,7 @@ using Wordclock.Core.Plugin;
 using Wordclock.Core.PowerManagement;
 using Wordclock.Core.RenderEngine;
 using Wordclock.Core.Startup;
+using Wordclock.Core.Utils;
 
 namespace Wordclock.Core
 {
@@ -20,8 +21,7 @@ namespace Wordclock.Core
 			RenderEngine = proxy;
 			PluginHandler = new PluginManager(RenderEngine, new DefaultLayoutBuilder());
 
-			TimeSlotStore = new XMLTimeSlotStore();
-			TimeSlotManager = new TimeSlotManager(RenderEngine, TimeSlotStore, new TimeProvider());
+			TimeSlotManager = new TimeSlotManager(RenderEngine, new WordclockTimer(1000 * 60), new TimeProvider(), new TimeSlotStoreDecorator(new XMLTimeSlotStore()));
 
 			PluginHandler.ChangeActivePlugin<Clock>();				
 		}
@@ -34,9 +34,7 @@ namespace Wordclock.Core
 		public static RenderManager RenderEngine { get; private set; }
 	
 		public static PluginManager PluginHandler { get; private set; }
-			
-		public static ITimeSlotStore TimeSlotStore { get; private set; }
-
+		
 		public static TimeSlotManager TimeSlotManager { get; private set; }
 	}
 }

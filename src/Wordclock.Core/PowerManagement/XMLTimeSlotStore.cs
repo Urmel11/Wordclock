@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Wordclock.Shared.Services;
 
@@ -13,7 +9,6 @@ namespace Wordclock.Core.PowerManagement
 	class XMLTimeSlotStore : ITimeSlotStore
 	{
 		private List<PowerTimeSlot> _timeSlots;
-		private ITimeSlotStoreObserver _observer;
 
 		private const string FILE_NAME = "TimeSlotConfig.xml";
 		private const string SUB_DIRECTORY = "data";
@@ -40,8 +35,6 @@ namespace Wordclock.Core.PowerManagement
 		{
 			SaveToFile(timeSlotsToSave);
 			_timeSlots = timeSlotsToSave.ToList();
-
-			NotifyStoreValuesChanged();
 		}
 		
 		/// <summary>
@@ -50,17 +43,13 @@ namespace Wordclock.Core.PowerManagement
 		/// <returns></returns>
 		private List<PowerTimeSlot> GetInitialTimeSlots()
 		{
-			List<PowerTimeSlot> result;
+			List<PowerTimeSlot> result = null;
 
 			if (IsConfigFileExisting())
 			{
 				result = ReadFromFile();
 			}
-			else
-			{
-				result = GetDefaultTimeSlots();
-			}
-
+			
 			return result;
 		}
 				
@@ -107,26 +96,6 @@ namespace Wordclock.Core.PowerManagement
 			return Directory.Exists(GetDirectoryPath());
 		}
 
-		private List<PowerTimeSlot> GetDefaultTimeSlots()
-		{
-			var result = new List<PowerTimeSlot>();
-
-			result.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Monday });
-			result.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Tuesday });
-			result.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Wednesday });
-			result.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Thursday });
-			result.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Friday });
-			result.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Saturday });
-			result.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Sunday });
-
-			return result;
-		}
-
-		private void NotifyStoreValuesChanged()
-		{
-			_observer?.StoreValuesChanged();
-		}
-
 		private string GetFilePath()
 		{			
 			return System.IO.Path.Combine(SUB_DIRECTORY, FILE_NAME);
@@ -137,9 +106,5 @@ namespace Wordclock.Core.PowerManagement
 			return SUB_DIRECTORY;
 		}
 
-		public void RegisterForStoreValuesChanged(ITimeSlotStoreObserver observer)
-		{
-			_observer = observer;
-		}
 	}
 }

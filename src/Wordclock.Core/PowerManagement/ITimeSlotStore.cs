@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Wordclock.Shared.Services;
 
 namespace Wordclock.Core.PowerManagement
@@ -12,7 +8,5 @@ namespace Wordclock.Core.PowerManagement
 		void SaveTimeSlots(IEnumerable<PowerTimeSlot> timeSlotsToSave);
 
 		List<PowerTimeSlot> GetTimeSlots();
-
-		void RegisterForStoreValuesChanged(ITimeSlotStoreObserver observer);
 	}
 }

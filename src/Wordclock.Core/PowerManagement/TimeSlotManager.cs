@@ -1,47 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
+using Wordclock.Core.Utils;
 using Wordclock.Shared.Services;
 
 namespace Wordclock.Core.PowerManagement
 {
-	public class TimeSlotManager : ITimeSlotStoreObserver
+	public class TimeSlotManager : ITimerObserver, ITimeSlotStore
 	{
 		private ITimeSlotObserver _timeSlotObserver;
-		private ITimeSlotStore _timeSlotStore;
+		private ITimer _timer;
 		private ITimeProvider _timeProvider;
-		private Timer _timer;
-		private PowerState? _state;
+		private ITimeSlotStore _timeSlotStore;
+		private PowerState? _currentPowerState;
 
-		public TimeSlotManager(ITimeSlotObserver timeSlotObserver,
-								ITimeSlotStore timeSlotStore,
-								ITimeProvider timeProvider)
+		public TimeSlotManager(ITimeSlotObserver timeSlotObserver, 
+								ITimer timer,
+								ITimeProvider timeProvider,
+								ITimeSlotStore timeSlotStore)
 		{
 			_timeSlotObserver = timeSlotObserver;
+			_timer = timer;
 			_timeProvider = timeProvider;
-			_timer = new Timer(1000 * 60);
 			_timeSlotStore = timeSlotStore;
-			_timeSlotStore.RegisterForStoreValuesChanged(this);
-						
-			_timer.Elapsed += _timer_Elapsed;
+			_currentPowerState = null;
+
+			_timer.RegisterForTimerElapsed(this);
+		}
+
+		public void Start()
+		{
 			_timer.Start();
 		}
 
-		private bool IsTimeInTimeSlot()
+		private void CheckTimeSlots()
 		{
-			DateTime currentTime = _timeProvider.GetDateTime();
-			var timeSlotsOfDay = _timeSlotStore.GetTimeSlots().
-									Where(x => x.DayOfWeek == currentTime.DayOfWeek && x.HasValue);
-			
-			return timeSlotsOfDay.Any(x => x.IsTimeInRange(currentTime.TimeOfDay));
+			var timeSlotPowerState = GetPowerStateInRespectOfTimeSlot();
+
+			if(timeSlotPowerState != _currentPowerState)
+			{
+				_timeSlotObserver.PowerStateChanged(timeSlotPowerState);
+				_currentPowerState = timeSlotPowerState;
+			}
 		}
 
-		private PowerState GetPowerStateOfTimeSlot()
+		private PowerState GetPowerStateInRespectOfTimeSlot()
 		{
-			if (IsTimeInTimeSlot())
+			var timeSlots = _timeSlotStore.GetTimeSlots();
+			var currentTime = _timeProvider.GetDateTime();
+
+			var isCurrentTimeInTimeSlot = timeSlots.Any(x => x.IsTimeInTimeSlot(currentTime));
+
+			if (isCurrentTimeInTimeSlot)
 			{
 				return PowerState.On;
 			}
@@ -49,32 +58,24 @@ namespace Wordclock.Core.PowerManagement
 			return PowerState.Off;
 		}
 
-		private void _timer_Elapsed(object sender, ElapsedEventArgs e)
+		public void TimerElapsed()
 		{
 			CheckTimeSlots();
 		}
 
-		private void CheckTimeSlots()
+		public void SaveTimeSlots(IEnumerable<PowerTimeSlot> timeSlotsToSave)
 		{
-			try
-			{
-				_timer.Enabled = false;
-				var newPowerState = GetPowerStateOfTimeSlot();
-				if (newPowerState != _state)
-				{
-					_timeSlotObserver.PowerStateChanged(newPowerState);
-					_state = newPowerState;
-				}
-			}
-			finally
-			{
-				_timer.Enabled = true;
-			}
+			_timer.DisableTimer();
+
+			_timeSlotStore.SaveTimeSlots(timeSlotsToSave);
+			CheckTimeSlots();
+
+			_timer.EnableTimer();
 		}
 
-		public void StoreValuesChanged()
+		public List<PowerTimeSlot> GetTimeSlots()
 		{
-			CheckTimeSlots();
+			return _timeSlotStore.GetTimeSlots();
 		}
 	}
 }
