@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Wordclock.WSRenderEngine.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="WSRenderEngine_RenderService_Application" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:7791/wsdl</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>

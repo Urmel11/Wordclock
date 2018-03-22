@@ -1,21 +1,24 @@
 ﻿using Wordclock.Core.RenderEngine;
 using Wordclock.Core.Startup;
 using Wordclock.Core.WordclockManagement;
-using Wordclock.WSRenderEngine;
 
 namespace Wordclock
 {
 	class StartupHandler : StartupHandlerBase
 	{
+		private RenderEngine _renderEngine;
+
 		public StartupHandler()
 		{
+			_renderEngine = new RenderEngine();
+
 			AddStartupCommand(new ManagementStartupCommand());
-			AddStartupCommand(new WebserverStartupCommand());
+			AddStartupCommand(_renderEngine);
 		}
 
 		public override IRenderEngine CreateRenderEngine()
 		{
-			return new WebserviceRenderEngine();
+			return _renderEngine;
 		}
 	}
 }

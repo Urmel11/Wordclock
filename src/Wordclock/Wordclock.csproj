@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\output\debug\wordclock\bin\</OutputPath>
+    <OutputPath>..\..\output\debug\wordclock\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,8 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="rpi_ws281x">
+      <HintPath>..\..\lib\rpi_ws281x.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenderEngine.cs" />
     <Compile Include="StartupHandler.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,10 +63,6 @@
     <ProjectReference Include="..\Wordclock.Shared\Wordclock.Shared.csproj">
       <Project>{cc8f3932-b535-4b4e-9278-e78430b31c28}</Project>
       <Name>Wordclock.Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Wordclock.WSRenderEngine\Wordclock.WSRenderEngine.csproj">
-      <Project>{8c93eb34-4ec9-4e6a-8b2d-b042b3c2f627}</Project>
-      <Name>Wordclock.WSRenderEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
