@@ -1,9 +1,5 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using Version.Plugin.Abstractions;
 using Wordclock.App.Utils;
 using Wordclock.Shared.Services;
 using Xamarin.Forms;
@@ -12,19 +8,16 @@ namespace Wordclock.App.ViewModels
 {
 	public class InfoPageViewModel : BindableBase, IRefreshable
 	{
-		private IVersion _versionService;
 		private IInfoService _infoService;
 		private IWordclockDialogService _dialogService;
 		private IUpdateService _updateService;
 		private IResourceService _resourceService;
 
-		public InfoPageViewModel(IVersion versionService,
-									IInfoService infoService,
+		public InfoPageViewModel(IInfoService infoService,
 									IWordclockDialogService dialogService,
 									IUpdateService updateService,
 									IResourceService resourceService)
 		{
-			_versionService = versionService;
 			_infoService = infoService;
 			_dialogService = dialogService;
 			_updateService = updateService;
@@ -39,7 +32,7 @@ namespace Wordclock.App.ViewModels
 		{
 			try
 			{
-				var appVersion = _versionService.Version;
+				var appVersion = "";//_versionService.Version;
 
 				return _updateService.IsUpdateRequired(appVersion);
 			}
@@ -83,7 +76,7 @@ namespace Wordclock.App.ViewModels
 		{
 			get
 			{
-				return _versionService.Version;
+				return "";// _versionService.Version;
 			}
 		}
 			

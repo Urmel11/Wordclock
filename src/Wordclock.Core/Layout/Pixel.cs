@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System;
-using Wordclock.Shared;
+using System.Drawing;
 
 namespace Wordclock.Core.Layout
 {
@@ -9,14 +9,13 @@ namespace Wordclock.Core.Layout
 	/// </summary>
 	public class Pixel : IChangeTracking
 	{
-		private ColorSurrogate _pixelColor;
-		private bool _isChanged;
-	
+		private Color _pixelColor;
+
 		public Pixel(int pixelID)
 		{
-			PixelColor = new ColorSurrogate();
+			Clear();
 			PixelID = pixelID;
-			_isChanged = true;
+			IsChanged = true;
 		}
 		/// <summary>
 		/// ID of the pixel 
@@ -27,7 +26,7 @@ namespace Wordclock.Core.Layout
 		/// <summary>
 		/// Gets or sets the color
 		/// </summary>
-		public ColorSurrogate PixelColor
+		public Color PixelColor
 		{
 			get { return _pixelColor; }
 			set
@@ -35,30 +34,27 @@ namespace Wordclock.Core.Layout
 				if(!value.Equals(_pixelColor))
 				{
 					_pixelColor = value;
-					_isChanged = true;
+					IsChanged = true;
 				}
 			}
 		}
 
 		public void Clear()
 		{
-			PixelColor = new ColorSurrogate();
+			PixelColor = Color.Empty;
 		}
-				
+
 		/// <summary>
 		/// Indicates if the object changed
 		/// </summary>
-		public bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-	
+		public bool IsChanged { get; private set; }
+
 		/// <summary>
 		/// Accept all the changes
 		/// </summary>
 		public void AcceptChanges()
 		{
-			_isChanged = false;
+			IsChanged = false;
 		}
 	}
 }

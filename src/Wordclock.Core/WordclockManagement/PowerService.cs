@@ -16,13 +16,12 @@ namespace Wordclock.Core.WordclockManagement
 
 		public List<PowerTimeSlot> GetPowerTimeSlots()
 		{
-			return Wordclock.TimeSlotStore.GetTimeSlots();
+			return Wordclock.TimeSlotManager.GetTimeSlots();
 		}
 		
-
 		public void SavePowerTimeSlots(IEnumerable<PowerTimeSlot> data)
 		{
-			Wordclock.TimeSlotStore.SaveTimeSlots(data);
+			Wordclock.TimeSlotManager.SaveTimeSlots(data);
 		}
 
 		public void SetPowerState(PowerState state)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using Wordclock.Core.Layout;
 using Wordclock.Core.RenderEngine;
@@ -50,7 +51,7 @@ namespace Wordclock.TestConsole
 
 				Console.ForegroundColor = ConsoleColor.Yellow;
 
-				if(changedPixels[i].PixelColor.Equals(new ColorSurrogate()))
+				if(changedPixels[i].PixelColor.Equals(Color.Empty))
 				{
 					Console.ResetColor();
 				}

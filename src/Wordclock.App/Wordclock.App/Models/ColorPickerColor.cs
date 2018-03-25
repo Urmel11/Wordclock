@@ -1,19 +1,13 @@
 ﻿using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace Wordclock.App.Models
 {
 	public class ColorPickerColor : BindableBase
 	{
-		private double _green, _blue, _red;
+		private int _green, _blue, _red;
 
-		Color _color;
-		public Color Color
+		System.Drawing.Color _color;
+		public System.Drawing.Color Color
 		{
 			get
 			{
@@ -25,7 +19,7 @@ namespace Wordclock.App.Models
 			}
 		}
 
-		public double Red
+		public int Red
 		{
 			get
 			{
@@ -38,7 +32,7 @@ namespace Wordclock.App.Models
 			}
 		}
 
-		public double Green
+		public int Green
 		{
 			get
 			{
@@ -51,7 +45,7 @@ namespace Wordclock.App.Models
 			}
 		}
 
-		public double Blue
+		public int Blue
 		{
 			get
 			{
@@ -66,7 +60,7 @@ namespace Wordclock.App.Models
 
 		private void UpdateColor()
 		{
-			Color = Color.FromRgb(Red, Green, Blue);
+			Color = System.Drawing.Color.FromArgb(Red, Green, Blue);
 		}
 
 	}

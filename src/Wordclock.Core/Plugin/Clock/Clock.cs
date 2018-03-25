@@ -108,17 +108,17 @@ namespace Wordclock.Core.Plugin
 						
 			if(_printPrefix)
 			{
-				Layout.Matrix.SetPixelColor(_wordProvider.GetPrefix(), GetClockColor().ToColorSurrogate());
+				Layout.Matrix.SetPixelColor(_wordProvider.GetPrefix(), GetClockColor());
 			}
 			
-			Layout.Matrix.SetPixelColor(hour, GetClockColor().ToColorSurrogate());
-			Layout.Matrix.SetPixelColor(minutes, GetClockColor().ToColorSurrogate());
+			Layout.Matrix.SetPixelColor(hour, GetClockColor());
+			Layout.Matrix.SetPixelColor(minutes, GetClockColor());
 						
 			SetDetailMinutes(time.Minute % 5);
 
 			if (time.Minute < 5)
 			{
-				Layout.Matrix.SetPixelColor(_wordProvider.GetSuffix(), GetClockColor().ToColorSurrogate());
+				Layout.Matrix.SetPixelColor(_wordProvider.GetSuffix(), GetClockColor());
 			}
 
 			Render();
@@ -135,7 +135,7 @@ namespace Wordclock.Core.Plugin
 
 			for (int i = 0; i <= minutes - 1; i++)
 			{
-				Layout.Minutes.Strip[3-i].PixelColor = GetClockColor().ToColorSurrogate();
+				Layout.Minutes.Strip[3-i].PixelColor = GetClockColor();
 			}
 		}
 

@@ -1,4 +1,5 @@
-﻿using Wordclock.Shared;
+﻿using System.Drawing;
+using Wordclock.Shared;
 using Wordclock.Shared.Services;
 
 namespace Wordclock.Core.WordclockManagement
@@ -17,16 +18,16 @@ namespace Wordclock.Core.WordclockManagement
 			return Wordclock.PluginHandler.GetPlugin<Core.Plugin.Clock>().GetShowPrefix();
 		}
 
-		public void SetClockColor(ColorSurrogate newColor)
+		public void SetClockColor(Color newColor)
 		{
 			var plugin = Core.Wordclock.PluginHandler.GetPlugin<Core.Plugin.Clock>();
-			plugin.SetClockColor(newColor.ToColor());
+			plugin.SetClockColor(newColor);
 		}
 		
-		public ColorSurrogate GetClockColor()
+		public Color GetClockColor()
 		{
 			var plugin = Core.Wordclock.PluginHandler.GetPlugin<Core.Plugin.Clock>();
-			return plugin.GetClockColor().ToColorSurrogate();
+			return plugin.GetClockColor();
 		}
 	}
 }
