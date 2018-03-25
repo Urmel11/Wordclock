@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="rpi_ws281x">
-      <HintPath>..\..\lib\rpi_ws281x.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -56,6 +53,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\lib\rpi-ws281x-csharp\src\rpi_ws281x\rpi_ws281x.csproj">
+      <Project>{ba92e305-93f0-4e12-bb59-c38f5a0e2e76}</Project>
+      <Name>rpi_ws281x</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wordclock.Core\Wordclock.Core.csproj">
       <Project>{178505ce-89d9-45e7-bf63-3fdb5fb67a25}</Project>
       <Name>Wordclock.Core</Name>

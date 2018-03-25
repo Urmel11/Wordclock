@@ -1,7 +1,6 @@
-﻿using Microsoft.Practices.Unity;
-using Prism.Services;
+﻿using Prism;
+using Prism.Ioc;
 using Prism.Unity;
-using System;
 using Wordclock.App.ClientProxies;
 using Wordclock.App.Utils;
 using Wordclock.App.Views;
@@ -21,24 +20,25 @@ namespace Wordclock.App
 			NavigationService.NavigateAsync("ConnectPage");
 		}
 
-		protected override void RegisterTypes()
+		protected override void RegisterTypes(IContainerRegistry containterRegistry)
 		{
-			Container.RegisterTypeForNavigation<NavigationPage>();
-			Container.RegisterTypeForNavigation<ConnectPage>();
-			Container.RegisterTypeForNavigation<MenuPage>();
-			Container.RegisterTypeForNavigation<InfoPage>();
+			containterRegistry.RegisterForNavigation<NavigationPage>();
+			containterRegistry.RegisterForNavigation<ConnectPage>();
+			containterRegistry.RegisterForNavigation<MenuPage>();
+			containterRegistry.RegisterForNavigation<InfoPage>();
 
-			Container.RegisterType<IWordclockDialogService, WordclockDialogService>();
-			Container.RegisterType<IConnectionService, ConnectionServiceProxy>();
-			Container.RegisterType<IInfoService, InfoServiceProxy>();
-			Container.RegisterType<IPowerService, PowerServiceProxy>();
-			Container.RegisterType<IEndpointConfigurationFactory, EndpointConfigurationFactory>();
-			Container.RegisterTypeForNavigation<PowerPage>();
-			Container.RegisterTypeForNavigation<ClockPage>();
-			Container.RegisterType<IClockService, ClockServiceProxy>();
-			Container.RegisterTypeForNavigation<ColorPickerPage>();
-			Container.RegisterType<IUpdateService, UpdateServiceProxy>();
-			Container.RegisterType<IResourceService, EmbeddedResourceService>();
+			containterRegistry.Register<IWordclockDialogService, WordclockDialogService>();
+			containterRegistry.Register<IConnectionService, ConnectionServiceProxy>();
+			containterRegistry.Register<IInfoService, InfoServiceProxy>();
+			containterRegistry.Register<IPowerService, PowerServiceProxy>();
+			containterRegistry.Register<IEndpointConfigurationFactory, EndpointConfigurationFactory>();
+			containterRegistry.RegisterForNavigation<PowerPage>();
+			containterRegistry.RegisterForNavigation<ClockPage>();
+			containterRegistry.Register<IClockService, ClockServiceProxy>();
+			containterRegistry.RegisterForNavigation<ColorPickerPage>();
+			containterRegistry.Register<IUpdateService, UpdateServiceProxy>();
+			containterRegistry.Register<IResourceService, EmbeddedResourceService>();
+			
 		}
 	}
 }

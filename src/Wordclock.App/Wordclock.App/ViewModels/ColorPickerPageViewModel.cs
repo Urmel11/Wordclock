@@ -59,7 +59,7 @@ namespace Wordclock.App.ViewModels
 		{
 			if (parameters.ContainsKey(CURRENT_COLOR_KEY))
 			{
-				var currentColor = (Color)parameters[CURRENT_COLOR_KEY];
+				var currentColor = (System.Drawing.Color)parameters[CURRENT_COLOR_KEY];
 				PickerColor.Blue = currentColor.B;
 				PickerColor.Red = currentColor.R;
 				PickerColor.Green = currentColor.G;

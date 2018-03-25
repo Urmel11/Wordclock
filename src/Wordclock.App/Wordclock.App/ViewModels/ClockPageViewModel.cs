@@ -1,13 +1,9 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using Prism.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Drawing;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Wordclock.App.Utils;
-using Wordclock.Shared;
 using Wordclock.Shared.Services;
 using Xamarin.Forms;
 
@@ -32,7 +28,7 @@ namespace Wordclock.App.ViewModels
 		private async Task OpenColorPicker()
 		{
 			var navigationParams = new NavigationParameters();
-			navigationParams.Add(ColorPickerPageViewModel.CURRENT_COLOR_KEY, ClockColor.ToSystemColor());
+			navigationParams.Add(ColorPickerPageViewModel.CURRENT_COLOR_KEY, ClockColor);
 
 			await _navigationService.NavigateAsync("ColorPickerPage", navigationParams);
 		}
@@ -76,11 +72,11 @@ namespace Wordclock.App.ViewModels
 		{
 			if(parameters.ContainsKey(ColorPickerPageViewModel.SELECTED_COLOR_KEY))
 			{
-				ClockColor = ((Color)parameters[ColorPickerPageViewModel.SELECTED_COLOR_KEY]).ToColorSurrogate();
+				ClockColor = ((System.Drawing.Color)parameters[ColorPickerPageViewModel.SELECTED_COLOR_KEY]);
 			}
 		}
 
-		private void SetClockColor(ColorSurrogate color)
+		private void SetClockColor(System.Drawing.Color color)
 		{
 			try
 			{
@@ -92,7 +88,7 @@ namespace Wordclock.App.ViewModels
 			}
 		}
 
-		private ColorSurrogate GetClockColor()
+		private System.Drawing.Color GetClockColor()
 		{
 			try
 			{
@@ -103,7 +99,7 @@ namespace Wordclock.App.ViewModels
 				_dialogService.ShowError(ex);
 			}
 
-			return null;
+			return System.Drawing.Color.Empty;
 		}
 
 		public bool ShowPrefix
@@ -118,7 +114,7 @@ namespace Wordclock.App.ViewModels
 			}
 		}
 
-		public ColorSurrogate ClockColor
+		public System.Drawing.Color ClockColor
 		{
 			get
 			{

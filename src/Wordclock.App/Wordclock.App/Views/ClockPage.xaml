@@ -9,7 +9,7 @@
 
 	<ContentPage.Resources>
 		<ResourceDictionary>
-			<local:ColorSurrogateToColorConverter x:Key="ColorSurrogateColorConverter"/>
+			<local:ColorConverter x:Key="ColorConverter"/>
 		</ResourceDictionary>
 	</ContentPage.Resources>
 
@@ -24,7 +24,7 @@
 							<ViewCell.View>
 								<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 									<Label Text="Farbe" YAlign="Center" Margin="16,0,0,0"/>
-									<Button Command="{Binding ChangeClockColorCommand}" BackgroundColor="{Binding ClockColor, Converter={StaticResource ColorSurrogateColorConverter}}" HorizontalOptions="EndAndExpand"/>
+									<Button Command="{Binding ChangeClockColorCommand}" BackgroundColor="{Binding ClockColor, Converter={StaticResource ColorConverter}}" HorizontalOptions="EndAndExpand"/>
 								</StackLayout>
 							</ViewCell.View>
 						</ViewCell>
