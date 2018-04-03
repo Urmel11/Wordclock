@@ -5,17 +5,33 @@
              prism:ViewModelLocator.AutowireViewModel="True"
 			 xmlns:local="clr-namespace:Wordclock.App.Behaviors"
              x:Class="Wordclock.App.Views.ConnectPage">
+	
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<Image AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            Source="background.jpg" Aspect="AspectFill"/>
+			
+			<StackLayout Orientation="Vertical" Padding="30" Spacing="40">
+			
+				<BoxView HeightRequest="10"/>
+				<Frame BackgroundColor="#BF043055" HasShadow="False">
+					<StackLayout Orientation="Vertical" Spacing="10">
+						<Entry Text="{Binding Server}" Placeholder="Adresse"   
+							   PlaceholderColor="White" HeightRequest="40"   
+							   Keyboard="Text"  
+							   TextColor="White"/>
+						<Entry Text="{Binding Port}" Placeholder="Port"   
+							   PlaceholderColor="White" HeightRequest="40"   
+							   Keyboard="Numeric"  
+							   TextColor="White"/>
+					</StackLayout>
+				</Frame>
+				<Button Command="{Binding Connect}" Text="Verbinden" TextColor="White"  
+						FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+						BackgroundColor="#088da5" />
+				<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="#088da5"/>
+			</StackLayout>
+		</Grid>
+	</ContentPage.Content>
 
-	<AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-		<StackLayout Padding="50" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
-			<Entry Placeholder="Adresse" Text="{Binding Server}" IsEnabled="{Binding IsNotBusy}"/>
-			<Entry Placeholder="Port" Text="{Binding Port}" Keyboard="Numeric" IsEnabled="{Binding IsNotBusy}">
-				<Entry.Behaviors>
-					<local:NumberValidatorBehavior/>
-				</Entry.Behaviors>
-			</Entry>
-			<Button Text="Verbinden" Command="{Binding Connect}"/>
-			<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="Black"/>
-		</StackLayout>
-	</AbsoluteLayout>
 </ContentPage>
