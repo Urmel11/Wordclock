@@ -38,14 +38,20 @@ namespace Wordclock.Core.PowerManagement
 
 			if(timeSlotPowerState != _currentPowerState)
 			{
-				_timeSlotObserver.PowerStateChanged(timeSlotPowerState);
+				_timeSlotObserver.PowerStateChanged(timeSlotPowerState.Value);
 				_currentPowerState = timeSlotPowerState;
 			}
 		}
 
-		private PowerState GetPowerStateInRespectOfTimeSlot()
+		private PowerState? GetPowerStateInRespectOfTimeSlot()
 		{
 			var timeSlots = _timeSlotStore.GetTimeSlots();
+
+			if(!timeSlots.Any(x => x.HasValue))
+			{
+				return _currentPowerState;
+			}
+
 			var currentTime = _timeProvider.GetDateTime();
 
 			var isCurrentTimeInTimeSlot = timeSlots.Any(x => x.IsTimeInTimeSlot(currentTime));

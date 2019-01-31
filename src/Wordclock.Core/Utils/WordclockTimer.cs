@@ -15,6 +15,7 @@ namespace Wordclock.Core.Utils
 
 		public void Start()
 		{
+			_timerObserver?.TimerElapsed();
 			_timer.Start();
 		}
 
@@ -36,7 +37,7 @@ namespace Wordclock.Core.Utils
 		private void Timer_Elapsed(object sender, ElapsedEventArgs e)
 		{
 			DisableTimer();
-			
+
 			_timerObserver?.TimerElapsed();
 
 			EnableTimer();

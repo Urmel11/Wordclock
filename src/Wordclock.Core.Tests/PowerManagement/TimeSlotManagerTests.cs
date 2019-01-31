@@ -3,6 +3,7 @@ using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Wordclock.Core.PowerManagement;
 using Wordclock.Core.Tests.Utils;
 using Wordclock.Shared.Services;
@@ -108,11 +109,32 @@ namespace Wordclock.Core.Tests.PowerManagement
 			_timeSlotManager.Start();
 			_timeSlotObserver.CurrentPowerState.Should().Be(PowerState.On);
 
-			_timeSlots.Clear();
-			_timeSlotManager.SaveTimeSlots(null);
+			_timeSlots.First().EndTime = new TimeSpan(14, 5, 0);
+			_timeSlotManager.SaveTimeSlots(_timeSlots);
 
 			_timeSlotObserver.CurrentPowerState.Should().Be(PowerState.Off);
 			_timeSlotObserver.Calls.Should().Be(2);
+		}
+
+		[TestCase(PowerState.On)]
+		[TestCase(PowerState.Off)]
+		public void Does_Not_Change_Lights_If_Default_Configuration_Is_Set(PowerState state)
+		{
+			_timeProvider.Time = DateTime.Now;
+
+			_timeSlotObserver.CurrentPowerState = state;
+
+			_timeSlots.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Monday });
+			_timeSlots.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Tuesday });
+			_timeSlots.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Wednesday });
+			_timeSlots.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Thursday });
+			_timeSlots.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Friday });
+			_timeSlots.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Saturday });
+			_timeSlots.Add(new PowerTimeSlot() { DayOfWeek = DayOfWeek.Sunday });
+
+			_timeSlotManager.Start();
+
+			_timeSlotObserver.CurrentPowerState.Should().Be(state);
 		}
 	}
 }

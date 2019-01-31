@@ -11,7 +11,7 @@ namespace Wordclock.Core.Tests.PowerManagement
 			Calls = 0;
 		}
 
-		public PowerState? CurrentPowerState { get; private set; }
+		public PowerState? CurrentPowerState { get; set; }
 
 		public int Calls { get; private set; }
 

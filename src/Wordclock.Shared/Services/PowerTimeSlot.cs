@@ -58,7 +58,7 @@ namespace Wordclock.Shared.Services
 		{
 			get
 			{
-				return StarTime.TotalSeconds > 0 || EndTime.TotalSeconds > 0;
+				return StartTimeTotalSeconds > 0 || EndTimeTotalSeconds > 0;
 			}
 		}
 
@@ -71,11 +71,12 @@ namespace Wordclock.Shared.Services
 		{
 			if(DayOfWeek == time.DayOfWeek)
 			{
-				return time.TimeOfDay.TotalSeconds >= StarTime.TotalSeconds &&
-					time.TimeOfDay.TotalSeconds <= EndTime.TotalSeconds;
+				return time.TimeOfDay.TotalSeconds >= StartTimeTotalSeconds &&
+					time.TimeOfDay.TotalSeconds <= EndTimeTotalSeconds;
 			}
 
 			return false;
 		}
+
 	}
 }
