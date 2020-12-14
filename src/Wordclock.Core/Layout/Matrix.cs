@@ -121,15 +121,16 @@ namespace Wordclock.Core.Layout
 		private int CalculatePixelID(int x, int y)
 		{
 			int result;
-			//Left upper corner is (0/0)
-			if (x % 2 == 0)
+
+			if(y % 2 == 0)
 			{
-				result = (x * Height) + y;
+				result = (y * Width) + x;
 			}
 			else
 			{
-				result = (x * Height) + (Height - y - 1);
+				result = (y * Width) + (Width - x - 1);
 			}
+
 			return result;
 		}
 

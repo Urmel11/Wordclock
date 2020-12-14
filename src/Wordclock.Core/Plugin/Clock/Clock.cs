@@ -130,12 +130,10 @@ namespace Wordclock.Core.Plugin
 		/// </summary>
 		/// <param name="minutes">Minutes</param>
 		private void SetDetailMinutes(int minutes)
-		{
-			int BaseIndex = Layout.Minutes.Strip[0].PixelID;
-
+		{	
 			for (int i = 0; i <= minutes - 1; i++)
 			{
-				Layout.Minutes.Strip[3-i].PixelColor = GetClockColor();
+				Layout.Minutes.Strip[i].PixelColor = GetClockColor();
 			}
 		}
 

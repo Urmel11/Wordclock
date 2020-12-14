@@ -1,5 +1,7 @@
-﻿using rpi_ws281x;
+﻿using Iot.Device.Ws28xx;
+using System;
 using System.Collections.Generic;
+using System.Device.Spi;
 using Wordclock.Core.Layout;
 using Wordclock.Core.RenderEngine;
 using Wordclock.Core.Startup;
@@ -11,32 +13,37 @@ namespace Wordclock
 	/// </summary>
 	class RenderEngine : IRenderEngine, IStartupCommand
 	{
-		//It is important to dispose the object to cleanup unmanaged memory
-		private WS281x _ws281x;
+		private SpiDevice _spiDevice;
+		private Ws2812b _device;
 
 		public void Render(IEnumerable<Pixel> pixelsToRender)
 		{
+			var image = _device.Image;
 
-			foreach(var p in pixelsToRender)
+			foreach (var p in pixelsToRender)
 			{
-				_ws281x.SetLEDColor(0, p.PixelID, p.PixelColor);
+				image.SetPixel(p.PixelID, 0, p.PixelColor);
 			}
 
-			_ws281x.Render();
+			_device.Update();
 		}
 
 		public void Shutdown()
 		{
-			_ws281x?.Dispose();
+			_spiDevice?.Dispose();
 		}
 
 		public void Startup()
 		{
-			var settings = Settings.CreateDefaultSettings();
+			SpiConnectionSettings settings = new(0, 0)
+			{
+				ClockFrequency = 2_400_000,
+				Mode = SpiMode.Mode0,
+				DataBitLength = 8
+			};
 
-			settings.Channels[0] = new Channel(140, 18, 255, false, StripType.WS2812_STRIP);
-
-			_ws281x = new WS281x(settings);
+			_spiDevice = SpiDevice.Create(settings);
+			_device = new Ws2812b(_spiDevice, 140);
 		}
 	}
 }

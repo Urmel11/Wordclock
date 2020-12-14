@@ -1,6 +1,5 @@
 ﻿using Wordclock.Core.RenderEngine;
 using Wordclock.Core.Startup;
-using Wordclock.Core.WordclockManagement;
 
 namespace Wordclock
 {
@@ -11,8 +10,6 @@ namespace Wordclock
 		public StartupHandler()
 		{
 			_renderEngine = new RenderEngine();
-
-			AddStartupCommand(new ManagementStartupCommand());
 			AddStartupCommand(_renderEngine);
 		}
 

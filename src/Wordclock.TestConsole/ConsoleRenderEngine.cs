@@ -99,8 +99,8 @@ namespace Wordclock.TestConsole
 			Console.WriteLine();
 
 			Console.Write("\t");
-			//for(int i=0; i<= layout.Minutes.GetStrip().Count -1; i++)
-			for (int i = layout.Minutes.Strip.Count - 1; i >= 0; i--)
+
+			for (int i = 0; i<= layout.Minutes.Strip.Count - 1; i++)
 			{
 				_consolePixels.Add(new ConsolePixel { PixelID = layout.Minutes.Strip[i].PixelID, ConsoleLeft = Console.CursorLeft, ConsoleTop = Console.CursorTop, Character="X" });
 				Console.Write("X ");
