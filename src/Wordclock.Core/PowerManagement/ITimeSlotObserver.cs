@@ -1,6 +1,4 @@
-﻿using Wordclock.Shared.Services;
-
-namespace Wordclock.Core.PowerManagement
+﻿namespace Wordclock.Core.PowerManagement
 {
 	public interface ITimeSlotObserver
 	{

@@ -1,13 +1,8 @@
-*~
-src/**/bin/
-src/**/obj/
-output/
-src/packages
-src/Wordclock.App/Wordclock.App/EmbeddedResources/
+#*~
 
-/Copy.bat
-/pscp.exe
-/putty.exe
+[Bb]in/
+[Oo]bj/
+[Oo]utput/
 
 # User-specific files
 *.suo
@@ -17,3 +12,7 @@ src/Wordclock.App/Wordclock.App/EmbeddedResources/
 
 # Visual Studio 2015 cache/options directory
 .vs/
+
+# Cake - Uncomment if you are using it
+tools/**
+#!tools/packages.config

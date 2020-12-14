@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Wordclock.Shared.Services;
 
 namespace Wordclock.Core.PowerManagement
 {

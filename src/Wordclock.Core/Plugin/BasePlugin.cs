@@ -5,7 +5,7 @@ namespace Wordclock.Core.Plugin
 {
 	public class BasePlugin
 	{
-		private IRenderEngine _renderEngine;
+		private IRenderEngine? _renderEngine;
 
 		public BasePlugin(PluginLayout layout)
 		{

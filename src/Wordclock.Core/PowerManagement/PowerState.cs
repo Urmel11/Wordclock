@@ -1,4 +1,4 @@
-﻿namespace Wordclock.Shared.Services
+﻿namespace Wordclock.Core.PowerManagement
 {
 	public enum PowerState
 	{

@@ -16,8 +16,4 @@
      <ProjectReference Include="..\Wordclock.Core\Wordclock.Core.csproj" />
    </ItemGroup>
 
-   <ItemGroup>
-     <Folder Include="Properties\" />
-   </ItemGroup>
-
 </Project>

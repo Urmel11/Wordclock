@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Wordclock.Core.Utils;
-using Wordclock.Shared.Services;
 
 namespace Wordclock.Core.PowerManagement
 {

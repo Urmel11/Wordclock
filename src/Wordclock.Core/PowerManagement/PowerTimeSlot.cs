@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace Wordclock.Shared.Services
+namespace Wordclock.Core.PowerManagement
 {
 	public class PowerTimeSlot
 	{

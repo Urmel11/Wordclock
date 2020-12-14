@@ -5,19 +5,11 @@
     <TargetFramework>net5.0</TargetFramework>
     <EnableNETAnalyzers>false</EnableNETAnalyzers>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-
-   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-     <NoWarn>;CS8321;CS1591</NoWarn>
-   </PropertyGroup>
 
    <ItemGroup>
      <PackageReference Include="Iot.Device.Bindings" Version="1.2.0" />
-   </ItemGroup>
-
-   <ItemGroup>
-     <Folder Include="Properties\" />
    </ItemGroup>
 
    <ItemGroup>

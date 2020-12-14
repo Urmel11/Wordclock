@@ -6,11 +6,13 @@ namespace Wordclock.Core.Utils
 	public class WordclockTimer : ITimer, IDisposable
 	{
 		private Timer _timer;
-		private ITimerObserver _timerObserver;
+		private ITimerObserver? _timerObserver;
 
 		public WordclockTimer(double interval)
 		{
-			InitTimer(interval);
+			_timer = new Timer();
+			_timer.Interval = interval;
+			_timer.Elapsed += Timer_Elapsed;
 		}
 
 		public void Start()
@@ -41,13 +43,6 @@ namespace Wordclock.Core.Utils
 			_timerObserver?.TimerElapsed();
 
 			EnableTimer();
-		}
-
-		private void InitTimer(double interval)
-		{
-			_timer = new Timer();
-			_timer.Interval = interval;
-			_timer.Elapsed += Timer_Elapsed;
 		}
 
 		#region IDisposable Support

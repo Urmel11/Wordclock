@@ -24,30 +24,26 @@ namespace Wordclock.Core.Plugin
 			_color = Color.White;
 			_printPrefix = true;
 
-			InitializeTimer();
+			_timer = new System.Timers.Timer();
+			InitializeTimer(_timer);
 		}
 
 		/// <summary>
 		/// Starts the plugin
 		/// </summary>
-		private void InitializeTimer()
-		{
-			//Ensure that the timer could not started twice
-			if(_timer == null)
-			{
-				_timer = new System.Timers.Timer();
-				_timer.Interval = 5*1000;
-				_timer.Elapsed += TimerElapsed;
-				_timer.Enabled = true;
-				_timer.Start();
+		private void InitializeTimer(System.Timers.Timer timer)
+		{	
+			timer.Interval = 5*1000;
+			timer.Elapsed += TimerElapsed;
+			timer.Enabled = true;
+			timer.Start();
 
-				//Ensure that the minute differs the first time so that a rendering is necessary
-				_oldMinute = -1;
+			//Ensure that the minute differs the first time so that a rendering is necessary
+			_oldMinute = -1;
 
-				//The elapsed event of the timer will be fired if the interval is reached
-				//To avoid delay after starting the clock, the time is set immediately
-				SetTime(DateTime.Now);
-			}
+			//The elapsed event of the timer will be fired if the interval is reached
+			//To avoid delay after starting the clock, the time is set immediately
+			SetTime(DateTime.Now);
 		}
 		
 		private void TimerElapsed(object sender, System.Timers.ElapsedEventArgs e)

@@ -13,19 +13,19 @@ namespace Wordclock
 	/// </summary>
 	class RenderEngine : IRenderEngine, IStartupCommand
 	{
-		private SpiDevice _spiDevice;
-		private Ws2812b _device;
+		private SpiDevice? _spiDevice;
+		private Ws2812b? _device;
 
 		public void Render(IEnumerable<Pixel> pixelsToRender)
 		{
-			var image = _device.Image;
+			var image = _device?.Image;
 
 			foreach (var p in pixelsToRender)
 			{
-				image.SetPixel(p.PixelID, 0, p.PixelColor);
+				image?.SetPixel(p.PixelID, 0, p.PixelColor);
 			}
 
-			_device.Update();
+			_device?.Update();
 		}
 
 		public void Shutdown()

@@ -23,6 +23,7 @@ namespace Wordclock.Core.Layout
 			Height	= height;
 
 			//Creates the pixel objects
+			_pixels = new List<Pixel>();
 			InitializePixels();
 		}
 
@@ -100,9 +101,7 @@ namespace Wordclock.Core.Layout
 		/// Initializes the pixels in the matrix
 		/// </summary>
 		private void InitializePixels()
-		{
-			_pixels = new List<Pixel>();
-			
+		{			
 			for(int i=0; i<= Height -1; i++)
 			{
 				for (int k = 0; k <= Width - 1; k++)
