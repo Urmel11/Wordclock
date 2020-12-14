@@ -9,7 +9,7 @@ namespace Wordclock.Core.Plugin
 	{
 		private IRenderEngine _renderEngine;
 		private IPluginLayoutBuilder _layoutBuilder;
-		private BasePlugin _activePlugin;
+		private BasePlugin? _activePlugin;
 		private List<BasePlugin> _plugins;
 
 		public PluginManager(IRenderEngine engine, IPluginLayoutBuilder layoutBuilder)
@@ -30,9 +30,9 @@ namespace Wordclock.Core.Plugin
 			_activePlugin?.AttachRenderEngine(_renderEngine);
 		}
 
-		public T GetPlugin<T>() where T : BasePlugin
+		public T? GetPlugin<T>() where T : BasePlugin
 		{
-			return (T)_plugins.Where(x => x.GetType().Equals(typeof(T))).FirstOrDefault();
+			return (T?)_plugins.Where(x => x.GetType().Equals(typeof(T))).FirstOrDefault();
 		}
 
 		private void RegisterPlugins()

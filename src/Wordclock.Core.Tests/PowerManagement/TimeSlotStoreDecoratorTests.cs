@@ -4,7 +4,6 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using Wordclock.Core.PowerManagement;
-using Wordclock.Shared.Services;
 
 namespace Wordclock.Core.Tests.PowerManagement
 {

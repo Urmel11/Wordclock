@@ -7,7 +7,7 @@ namespace Wordclock.Core.PowerManagement
 {
 	class XMLTimeSlotStore : ITimeSlotStore
 	{
-		private List<PowerTimeSlot> _timeSlots;
+		private List<PowerTimeSlot>? _timeSlots;
 
 		private const string FILE_NAME = "TimeSlotConfig.xml";
 		private const string SUB_DIRECTORY = "data";
@@ -16,7 +16,7 @@ namespace Wordclock.Core.PowerManagement
 		/// Returns all time slots
 		/// </summary>
 		/// <returns></returns>
-		public List<PowerTimeSlot> GetTimeSlots()
+		public List<PowerTimeSlot>? GetTimeSlots()
 		{
 			if(_timeSlots == null)
 			{
@@ -40,9 +40,9 @@ namespace Wordclock.Core.PowerManagement
 		/// Reads the time slots either from config file (if existing) or create default time slots
 		/// </summary>
 		/// <returns></returns>
-		private List<PowerTimeSlot> GetInitialTimeSlots()
+		private List<PowerTimeSlot>? GetInitialTimeSlots()
 		{
-			List<PowerTimeSlot> result = null;
+			List<PowerTimeSlot>? result = null;
 
 			if (IsConfigFileExisting())
 			{
@@ -52,7 +52,7 @@ namespace Wordclock.Core.PowerManagement
 			return result;
 		}
 				
-		private List<PowerTimeSlot> ReadFromFile()
+		private List<PowerTimeSlot>? ReadFromFile()
 		{
 			var serializer = new XmlSerializer(typeof(List<PowerTimeSlot>));
 			using (var reader = new StreamReader(GetFilePath()))
@@ -60,7 +60,7 @@ namespace Wordclock.Core.PowerManagement
 				var result = serializer.Deserialize(reader);
 				reader.Close();
 
-				return (result as List<PowerTimeSlot>);
+				return result as List<PowerTimeSlot>;
 			}
 		}
 

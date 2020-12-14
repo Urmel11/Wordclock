@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using Wordclock.Core.Layout;
 using Wordclock.Core.RenderEngine;
-using Wordclock.Shared;
 
 namespace Wordclock.TestConsole
 {
@@ -42,7 +41,7 @@ namespace Wordclock.TestConsole
 
 			for(int i=0; i<= changedPixels.Count -1; i++)
 			{
-				ConsolePixel p = _consolePixels.Where(x => x.PixelID == changedPixels[i].PixelID).FirstOrDefault();
+				ConsolePixel? p = _consolePixels.Where(x => x.PixelID == changedPixels[i].PixelID).FirstOrDefault();
 
 				if(p == null)
 				{
@@ -113,6 +112,6 @@ namespace Wordclock.TestConsole
 		public int PixelID { get; set; }
 		public int ConsoleTop { get; set; }
 		public int ConsoleLeft { get; set; }
-		public string Character { get; set; }
+		public string? Character { get; set; }
 	}
 }

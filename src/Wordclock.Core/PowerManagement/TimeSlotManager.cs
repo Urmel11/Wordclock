@@ -34,6 +34,8 @@ namespace Wordclock.Core.PowerManagement
 		private void CheckTimeSlots()
 		{
 			var timeSlotPowerState = GetPowerStateInRespectOfTimeSlot();
+			if (timeSlotPowerState is null)
+				return;
 
 			if(timeSlotPowerState != _currentPowerState)
 			{
@@ -45,6 +47,8 @@ namespace Wordclock.Core.PowerManagement
 		private PowerState? GetPowerStateInRespectOfTimeSlot()
 		{
 			var timeSlots = _timeSlotStore.GetTimeSlots();
+			if (timeSlots is null)
+				return null;
 
 			if(!timeSlots.Any(x => x.HasValue))
 			{
@@ -78,7 +82,7 @@ namespace Wordclock.Core.PowerManagement
 			_timer.EnableTimer();
 		}
 
-		public List<PowerTimeSlot> GetTimeSlots()
+		public List<PowerTimeSlot>? GetTimeSlots()
 		{
 			return _timeSlotStore.GetTimeSlots();
 		}

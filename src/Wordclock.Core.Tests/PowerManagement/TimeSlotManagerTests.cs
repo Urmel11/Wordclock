@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Wordclock.Core.PowerManagement;
 using Wordclock.Core.Tests.Utils;
-using Wordclock.Shared.Services;
 
 namespace Wordclock.Core.Tests.PowerManagement
 {

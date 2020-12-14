@@ -6,6 +6,6 @@ namespace Wordclock.Core.PowerManagement
 	{
 		void SaveTimeSlots(IEnumerable<PowerTimeSlot> timeSlotsToSave);
 
-		List<PowerTimeSlot> GetTimeSlots();
+		List<PowerTimeSlot>? GetTimeSlots();
 	}
 }

@@ -12,9 +12,9 @@ namespace Wordclock.Core.PowerManagement
 			_store = store;
 		}
 
-		public List<PowerTimeSlot> GetTimeSlots()
+		public List<PowerTimeSlot>? GetTimeSlots()
 		{
-			List<PowerTimeSlot> result;
+			List<PowerTimeSlot>? result;
 
 			result = _store.GetTimeSlots();
 
