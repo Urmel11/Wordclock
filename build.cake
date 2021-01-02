@@ -4,12 +4,12 @@ var target = Argument("target", "Publish");
 var configuration = Argument("configuration", "Release");
 
 var deploymentTarget = Argument("deyploymentTarget", "raspberrypi");
-var deploymentPath = Argument("deyploymentPath", "/home/pi/test");
+var deploymentPath = Argument("deyploymentPath", "/home/pi/clock");
 var deyplomentUser = Argument("user", "pi");
 var deyplomentPassword = Argument("password", "raspberry");
 
-var projectFile = "./src/Wordclock/Wordclock.csproj";
-var outputDirectory = "./output";
+var projectFile = "./src/Wordclock.App/Wordclock.App.csproj";
+var outputDirectory = "./artifacts";
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -32,20 +32,21 @@ Task("Publish")
 		PublishSingleFile=true,
 		OutputDirectory=outputDirectory,
     });
+
 });
 
 Task("Deploy")
     .IsDependentOn("Publish")
     .Does(() =>
 {
-	var files = GetFiles(outputDirectory + "/*").Select(m => m.ToString()).ToArray();
-	
+	var source = outputDirectory + "/*";
 	var destination = $"{deploymentTarget}:{deploymentPath}";
-	Pscp(files, destination, new PscpSettings
+	Pscp(source, destination, new PscpSettings
 		{
 			SshVersion = SshVersion.V2,
 			User = deyplomentUser,
-			Password=deyplomentPassword
+			Password=deyplomentPassword,
+			CopyDirectoriesRecursively =true
 		}
 	);
 });

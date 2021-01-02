@@ -1,0 +1,18 @@
+﻿@page "/"
+
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<h1 class="text-center">Information</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-1">
+			Status
+		</div>
+		<div class="col">
+			<button class="btn btn-success" disabled="@(IsOn)" @onclick="OnOnClicked">On</button>
+			<button class="btn btn-danger" disabled="@(!IsOn)" @onclick="OnOffClicked">Off</button>
+		</div>
+	</div>
+</div>

@@ -24,15 +24,16 @@ namespace Wordclock.Core.Plugin
 			_color = Color.White;
 			_printPrefix = true;
 
-			_timer = new System.Timers.Timer();
-			InitializeTimer(_timer);
+			_timer = InitializeTimer();
 		}
 
 		/// <summary>
 		/// Starts the plugin
 		/// </summary>
-		private void InitializeTimer(System.Timers.Timer timer)
-		{	
+		private System.Timers.Timer InitializeTimer()
+		{
+			var timer = new System.Timers.Timer();
+
 			timer.Interval = 5*1000;
 			timer.Elapsed += TimerElapsed;
 			timer.Enabled = true;
@@ -44,6 +45,8 @@ namespace Wordclock.Core.Plugin
 			//The elapsed event of the timer will be fired if the interval is reached
 			//To avoid delay after starting the clock, the time is set immediately
 			SetTime(DateTime.Now);
+
+			return timer;
 		}
 		
 		private void TimerElapsed(object sender, System.Timers.ElapsedEventArgs e)

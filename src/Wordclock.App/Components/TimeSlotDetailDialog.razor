@@ -1,0 +1,52 @@
+﻿@if (ShowDialog)
+{
+	<div class="modal fade show d-block">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Timeslog Detail</h5>
+					<button type="button" class="close" @onclick="@Close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-content">
+					<EditForm Model="@TimeSlot">
+						<div class="form-group">
+							<label>Wochentag:</label>
+							<InputSelect @bind-Value="@TimeSlot.DayOfWeek">
+								@foreach (DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
+									{
+									<option value="@day">@day</option>
+									}
+							</InputSelect>
+						</div>
+
+						<div class="form-group">
+							<label>Aktiv von:</label>
+							<input type="time" />
+						</div>
+
+						<div class="form-group">
+							<label>Aktiv bis:</label>
+							<input type="time" />
+						</div>
+
+						<div class="form-group">
+							<label>Farbe</label>
+							<input type="color" />
+						</div>
+
+						<div class="form-group">
+							<label>Zeit</label>
+							<input type="time" id="appt" name="appt"
+								   min="09:00" max="18:00" required>
+						</div>
+
+						<button type="submit" class="btn btn-primary">Speichern</button>
+						<a class="btn btn-outline-primary" @onclick="@Close">Abbrechen</a>
+					</EditForm>
+				</div>
+			</div>
+		</div>
+	</div>
+}

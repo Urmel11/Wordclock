@@ -1,0 +1,35 @@
+﻿@page "/powermanagement"
+
+<h3>Energieverwaltung</h3>
+
+<div class="container">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Wochentag</th>
+				<th>Aktiv von</th>
+				<th>Aktiv bis</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var timeSlot in TimeSlots)
+			{
+				<tr>
+					<td>@timeSlot.DayOfWeek</td>
+					<td>@timeSlot.StarTime</td>
+					<td>@timeSlot.EndTime</td>
+					<td>
+						<a href="" class="btn">
+							<i class="oi oi-pencil"></i>
+						</a>
+						<button class="btn oi oi-delete"></button>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+<button class="btn btn-primary table-btn quick-add-btn" @onclick="@AddTimeSlotDetail">&nbsp;&nbsp;+&nbsp;&nbsp;</button>
+<TimeSlotDetailDialog @ref="TimeSlotDetailDialog"/>
