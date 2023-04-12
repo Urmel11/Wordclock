@@ -6,7 +6,7 @@ var configuration = Argument("configuration", "Release");
 var deploymentTarget = Argument("deyploymentTarget", "raspberrypi");
 var deploymentPath = Argument("deyploymentPath", "/home/pi/clock");
 var deyplomentUser = Argument("user", "pi");
-var deyplomentPassword = Argument("password", "raspberry");
+var deyplomentPassword = Argument("password", "pi");
 
 var projectFile = "./src/Wordclock.App/Wordclock.App.csproj";
 var outputDirectory = "./artifacts";
@@ -28,7 +28,7 @@ Task("Publish")
     DotNetCorePublish(projectFile, new DotNetCorePublishSettings
     {
         Configuration = configuration,
-		Runtime = "linux-arm",
+		Runtime = "linux-arm64",
 		PublishSingleFile=true,
 		OutputDirectory=outputDirectory,
     });

@@ -1,0 +1,44 @@
+/boot/config.txt
+dtparam=spi=on
+core_freq_min=250
+core_freq=250
+spidev.bufsiz=1024000
+
+dtparam=audio=off
+
+/boot/cmdline.txt
+spidev.bufsiz=1024000
+
+https://cp2004.gitbook.io/ws281x-led-status/guides/setup-guide-1/spi-setup
+https://github.com/raspberrypi/linux/issues/3381
+
+current kernel version: 5.15.61-v8+
+new kernel version: 4.19.118.-v8+
+Command to downgrade kernel: sudo rpi-update e1050e94821a70b2e4c72b318d6c6c968552e9a2
+command to update kerne: sudo rpi-update
+show current kernel version: uname -a
+
+mit neuer kernelversion folgende einstellungen:
+/boot/config.txt
+dtparam=spi=on
+core_freq_min=500
+
+und
+
+/boot/cmdline.txt
+spidev.bufsiz=1024000
+
+
+Clock Rate messen
+vcgencmd measure_clock core
+
+CPU Governor
+https://docs.zymbit.com/reference/cpu-scaling/
+steht auf ondemand und soltle auf performance
+
+https://github.com/dotnet/iot
+
+
+Allgemeines Setup für den Raspberry
+Richtige Zeitzone einstellen
+sudo timedatectl set-timezone Europe/Berlin

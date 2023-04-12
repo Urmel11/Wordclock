@@ -1,0 +1,18 @@
+[Unit]
+Description="Wordclock service"
+
+[Service]
+ExecStart=/home/raspberry/clock/Wordclock.App
+WorkingDirectory=/home/raspberry/clock
+User=rasbperry
+Group=rasbperry
+
+[Install]
+WantedBy=mulit-user.target
+
+#Copy this file to /etc/systemd/system and execute below commands
+#sudo systemctl enable clock.service #enables autostart
+#sudo systemctl start clock.service #runs now
+#sudo systemctl status clock.service #checks status
+
+#https://www.nikouusitalo.com/blog/creating-an-autostart-net-6-service-on-a-raspberry-pi/
