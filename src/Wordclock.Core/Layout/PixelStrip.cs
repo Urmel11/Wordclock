@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 
 namespace Wordclock.Core.Layout
 {
 	/// <summary>
 	/// Class represents a strip of pixels
 	/// </summary>
-	public class PixelStrip : IChangeTracking
+	public class PixelStrip
 	{
-		private List<Pixel> _strip;
+		private readonly List<Pixel> _strip;
 
 		/// <summary>
 		/// Initializes the object
@@ -18,87 +17,42 @@ namespace Wordclock.Core.Layout
 		public PixelStrip(int count, int offset)
 		{
 			_strip = new List<Pixel>();
-			AddPixels(count, offset);
+
+			for (int i = 0; i < count; i++)
+				_strip.Add(new Pixel(i + offset));
 		}
 
 		/// <summary>
 		/// Sets the color on all pixels in the strip
 		/// </summary>
 		/// <param name="newColor">Color to set</param>
-		public void ChangeColor(Color newColor)
-		{
-			foreach(var pixel in _strip)
-			{
-				pixel.PixelColor = newColor;
-			}
-		}
-		
-		public void AddPixel(int pixelID)
-		{
-			_strip.Add(new Pixel(pixelID));
-		}		
-
-		public void AddPixels(int count, int offset)
-		{
-			for (int i = 0; i < count; i++)
-			{
-				AddPixel(i + offset);
-			}
-		}
+		public void ChangeColor(Color newColor) => _strip.ForEach(x=> x.PixelColor = newColor);
 
 		/// <summary>
 		/// Accept the changes
 		/// </summary>
-		public void AcceptChanges()
-		{
-			foreach (IChangeTracking pixel in _strip)
-			{
-				pixel.AcceptChanges();
-			}
-		}
+		public void AcceptChanges() => _strip.ForEach(x => x.AcceptChanges());
 
 		/// <summary>
 		/// Reset the color of all pixels
 		/// </summary>
-		public void Clear()
-		{
-			foreach (var pixel in _strip)
-			{
-				pixel.Clear();
-			}
-		}
-
+		public void Clear() => _strip.ForEach(pixel => pixel.Clear());
+		
 		/// <summary>
 		/// Returns the changed pixels
 		/// </summary>
 		/// <returns></returns>
-		public List<Pixel> GetChangedPixels()
-		{
-			return _strip.Where(x => x.IsChanged).ToList();
-		}
+		public IEnumerable<Pixel> GetChangedPixels() => _strip.Where(x => x.IsChanged);
 		
 		/// <summary>
 		/// Returns a value which is indicating if the strip has changed
 		/// </summary>
-		public bool IsChanged
-		{
-			get
-			{
-				return _strip.Where(x => x.IsChanged).Any();
-			}
-		}
-
+		public bool IsChanged => _strip.Any(x => x.IsChanged);
+		
 		/// <summary>
 		/// Returns the current strip
 		/// </summary>
 		/// <returns></returns>
-		public List<Pixel> Strip
-		{
-			get
-			{
-				return _strip;
-			}
-		}
-
+		public IReadOnlyList<Pixel> Strip =>_strip.AsReadOnly();
 	}
 }

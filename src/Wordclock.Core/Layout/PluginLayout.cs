@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace Wordclock.Core.Layout
 {
 	/// <summary>
 	/// Class which represents the layout of the pixels
 	/// </summary>
-	public class PluginLayout : IChangeTracking
+	public class PluginLayout
 	{
 		public PluginLayout(Matrix matrix, PixelStrip minutes)
 		{
@@ -27,7 +26,7 @@ namespace Wordclock.Core.Layout
 		/// Returns the changed pixels of the layout
 		/// </summary>
 		/// <returns></returns>
-		public List<Pixel> GetChangedPixels()
+		public IEnumerable<Pixel> GetChangedPixels()
 		{
 			var result = new List<Pixel>();
 			
@@ -46,20 +45,13 @@ namespace Wordclock.Core.Layout
 			Minutes.Clear();
 		}
 		
-		public Matrix Matrix { get; private set; }
+		public Matrix Matrix { get; }
 
-		public PixelStrip Minutes { get; private set; }
+		public PixelStrip Minutes { get; }
 
 		/// <summary>
 		/// Gets a valud which is indicating if the layout changed
 		/// </summary>
-		public bool IsChanged
-		{
-			get
-			{
-				return Matrix.IsChanged ||
-						Minutes.IsChanged;
-			}
-		}
+		public bool IsChanged => Matrix.IsChanged || Minutes.IsChanged;
 	}
 }

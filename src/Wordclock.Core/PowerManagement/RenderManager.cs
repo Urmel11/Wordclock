@@ -34,7 +34,7 @@ namespace Wordclock.Core
 					InternalRender(pixelsToRender);
 				}
 				
-				foreach (IChangeTracking p in pixelsToRender)
+				foreach (var p in pixelsToRender)
 				{
 					p.AcceptChanges();
 				}

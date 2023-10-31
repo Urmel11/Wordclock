@@ -1,12 +1,11 @@
-﻿using System.ComponentModel;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Wordclock.Core.Layout
 {
 	/// <summary>
 	/// Class represents the ambilight
 	/// </summary>
-	public class AmbilightLayout : IChangeTracking
+	public class AmbilightLayout
 	{
 		public AmbilightLayout(PixelStrip left, PixelStrip right)
 		{
@@ -14,7 +13,7 @@ namespace Wordclock.Core.Layout
 			RightAmbilight	= right;		
 		}
 		
-		public List<Pixel> GetChangedPixels()
+		public IEnumerable<Pixel> GetChangedPixels()
 		{
 			var result = new List<Pixel>();
 
@@ -30,17 +29,10 @@ namespace Wordclock.Core.Layout
 			RightAmbilight.AcceptChanges();
 		}
 
-		public PixelStrip LeftAmbilight { get; private set; }
+		public PixelStrip LeftAmbilight { get; }
 
-		public PixelStrip RightAmbilight { get; private set; }
+		public PixelStrip RightAmbilight { get; }
 
-		public bool IsChanged
-		{
-			get
-			{
-				return LeftAmbilight.IsChanged || 
-						RightAmbilight.IsChanged;
-			}
-		}
+		public bool IsChanged => LeftAmbilight.IsChanged || RightAmbilight.IsChanged;
 	}
 }

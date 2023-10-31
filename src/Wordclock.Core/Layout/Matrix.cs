@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 
@@ -8,9 +7,9 @@ namespace Wordclock.Core.Layout
 	/// <summary>
 	/// Class represents the matrix
 	/// </summary>
-	public class Matrix : IChangeTracking
+	public class Matrix
 	{	
-		private List<Pixel> _pixels;
+		private readonly List<Pixel> _pixels;
 
 		/// <summary>
 		/// Initializes the matrix
@@ -22,7 +21,6 @@ namespace Wordclock.Core.Layout
 			Width	= width;
 			Height	= height;
 
-			//Creates the pixel objects
 			_pixels = new List<Pixel>();
 			InitializePixels();
 		}
@@ -35,8 +33,8 @@ namespace Wordclock.Core.Layout
 		/// <returns></returns>
 		public Pixel GetPixel(int x, int y)
 		{
-			int pixelID = CalculatePixelID(x, y);
-			return _pixels.Where(p => p.PixelID == pixelID).First();
+			var pixelId = CalculatePixelID(x, y);
+			return _pixels.First(p => p.PixelID == pixelId);
 		}
 
 		/// <summary>
@@ -45,12 +43,10 @@ namespace Wordclock.Core.Layout
 		/// <param name="x"></param>
 		/// <param name="y"></param>
 		/// <param name="newColor"></param>
-		public void SetPixelColor(int x, int y, Color newColor)
+		private void SetPixelColor(int x, int y, Color newColor)
 		{
 			if ((x >= 0 && x < Width) && (y >= 0 && y < Height))
-			{
 				GetPixel(x, y).PixelColor = newColor;
-			}
 		}
 
 		/// <summary>
@@ -61,42 +57,25 @@ namespace Wordclock.Core.Layout
 		public void SetPixelColor(IEnumerable<Point> points, Color color)
 		{
 			foreach (var p in points)
-			{
 				SetPixelColor(p.X, p.Y, color);
-			}
-		}
-		
-		/// <summary>
-		/// Accept the changes
-		/// </summary>
-		public void AcceptChanges()
-		{
-			foreach(IChangeTracking p in _pixels)
-			{
-				p.AcceptChanges();
-			}
 		}
 
 		/// <summary>
+		/// Accept the changes
+		/// </summary>
+		public void AcceptChanges() => _pixels.ForEach(x => x.AcceptChanges());
+		
+		/// <summary>
 		/// Reset the color of all pixels
 		/// </summary>
-		public void Clear()
-		{
-			foreach (var pixel in _pixels)
-			{
-				pixel.Clear();
-			}
-		}
+		public void Clear() => _pixels.ForEach(x => x.Clear());
 
 		/// <summary>
 		/// Returns the changed pixels
 		/// </summary>
 		/// <returns></returns>
-		public List<Pixel> GetChangedPixels()
-		{
-			return _pixels.Where(x => x.IsChanged).ToList();
-		}
-		
+		public IEnumerable<Pixel> GetChangedPixels() => _pixels.Where(x => x.IsChanged);
+			
 		/// <summary>
 		/// Initializes the pixels in the matrix
 		/// </summary>
@@ -105,9 +84,7 @@ namespace Wordclock.Core.Layout
 			for(int i=0; i<= Height -1; i++)
 			{
 				for (int k = 0; k <= Width - 1; k++)
-				{
 					_pixels.Add(new Pixel(CalculatePixelID(k, i)));
-				}
 			}
 		}
 
@@ -119,41 +96,25 @@ namespace Wordclock.Core.Layout
 		/// <param name="y">The y coordinate.</param>
 		private int CalculatePixelID(int x, int y)
 		{
-			int result;
-
 			if(y % 2 == 0)
-			{
-				result = (y * Width) + x;
-			}
-			else
-			{
-				result = (y * Width) + (Width - x - 1);
-			}
-
-			return result;
+				return (y * Width) + x;
+		
+			return (y * Width) + (Width - x - 1);
 		}
 
 		/// <summary>
 		/// Returns the height of the matrix
 		/// </summary>
-		public int Height { get; private set; }
-
+		public int Height { get; }
 
 		/// <summary>
 		/// Returns the width of the matrix
 		/// </summary>
-		public int Width { get; private set; }
-
+		public int Width { get; }
 
 		/// <summary>
 		/// Returns a value which indicates if the matrix has changes
 		/// </summary>
-		public bool IsChanged
-		{
-			get
-			{
-				return _pixels.Where(x => x.IsChanged).Any();
-			}
-		}
+		public bool IsChanged => _pixels.Any(x => x.IsChanged);
 	}
 }
