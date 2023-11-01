@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
+using System.Threading.Tasks;
 using Wordclock.Core.Layout;
 
 namespace Wordclock.Core.Plugin
@@ -11,56 +13,16 @@ namespace Wordclock.Core.Plugin
 	public class Clock : BasePlugin
 	{
 		private ITimeWordProvider _wordProvider;
-		private System.Timers.Timer _timer;
 		private Color _color;
 		private bool _printPrefix;
 
 		private int _oldMinute;
 
-		public Clock(PluginLayout layout) : base(layout)
+		public Clock(ILayoutFactory layoutFactory, ITimeWordProvider wordProvider) : base(layoutFactory)
 		{
-			//Use the German layout by default
-			_wordProvider = new TimeWordGerman();
+			_wordProvider = wordProvider;
 			_color = Color.White;
 			_printPrefix = true;
-
-			_timer = InitializeTimer();
-		}
-
-		/// <summary>
-		/// Starts the plugin
-		/// </summary>
-		private System.Timers.Timer InitializeTimer()
-		{
-			var timer = new System.Timers.Timer();
-
-			timer.Interval = 5*1000;
-			timer.Elapsed += TimerElapsed;
-			timer.Enabled = true;
-			timer.Start();
-
-			//Ensure that the minute differs the first time so that a rendering is necessary
-			_oldMinute = -1;
-
-			//The elapsed event of the timer will be fired if the interval is reached
-			//To avoid delay after starting the clock, the time is set immediately
-			SetTime(DateTime.Now);
-
-			return timer;
-		}
-		
-		private void TimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
-		{
-			try
-			{
-				//Disable the timer that the event is not called twice
-				_timer.Enabled = false;
-				SetTime(DateTime.Now);
-			}
-			finally
-			{
-				_timer.Enabled = true;
-			}
 		}
 
 		public Color GetClockColor()
@@ -132,7 +94,7 @@ namespace Wordclock.Core.Plugin
 		{	
 			for (int i = 0; i <= minutes - 1; i++)
 			{
-				Layout.Minutes.Strip[i].PixelColor = GetClockColor();
+				Layout.Minutes[i].PixelColor = GetClockColor();
 			}
 		}
 
@@ -146,7 +108,6 @@ namespace Wordclock.Core.Plugin
 			return (_oldMinute != timeToRender.Minute);
 		}
 		
-
 		public bool GetShowPrefix()
 		{
 			return _printPrefix;
@@ -159,6 +120,17 @@ namespace Wordclock.Core.Plugin
 			_oldMinute = _oldMinute - 1;
 			SetTime(DateTime.Now);
 		}
-		
+
+		protected override async Task Execute(CancellationToken cancellationToken)
+		{
+			_oldMinute = -1;
+
+			while(!cancellationToken.IsCancellationRequested)
+			{
+				SetTime(DateTime.Now);
+
+				await Task.Delay(5 * 1000, cancellationToken);
+			}
+		}
 	}
 }

@@ -9,9 +9,10 @@
   </PropertyGroup>
 
    <ItemGroup>
-     <PackageReference Include="Iot.Device.Bindings" Version="2.2.0" />
+     <PackageReference Include="Iot.Device.Bindings" Version="3.0.0" />
      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
-     <PackageReference Include="Scrutor" Version="4.2.0" />
+     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+     <PackageReference Include="Scrutor" Version="4.2.2" />
    </ItemGroup>
 
 </Project>

@@ -1,25 +1,31 @@
-﻿using Wordclock.Core.Layout;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Wordclock.Core.Layout;
 using Wordclock.Core.RenderEngine;
 
 namespace Wordclock.Core.Plugin
 {
-	public class BasePlugin
+	public abstract class BasePlugin
 	{
 		private IRenderEngine? _renderEngine;
+		private CancellationTokenSource? _cancellationTokenSource;
 
-		public BasePlugin(PluginLayout layout)
+		public BasePlugin(ILayoutFactory layoutFactor)
 		{
-			Layout = layout;
+			Layout = layoutFactor.CreateLayout();
 		}
 
 		public void AttachRenderEngine(IRenderEngine engine)
 		{
 			_renderEngine = engine;
-			Render();
+			_cancellationTokenSource = new CancellationTokenSource();
+
+			Execute(_cancellationTokenSource.Token);
 		}
 
 		public void DetachRenderEngine()
 		{
+			_cancellationTokenSource?.Cancel();
 			_renderEngine = null;
 		}
 
@@ -27,6 +33,8 @@ namespace Wordclock.Core.Plugin
 		{
 			_renderEngine?.Render(Layout.GetChangedPixels());
 		}
+
+		protected abstract Task Execute(CancellationToken cancellationToken);
 
 		public PluginLayout Layout { get; private set; }
 	}

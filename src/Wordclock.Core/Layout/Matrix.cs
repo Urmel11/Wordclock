@@ -34,7 +34,7 @@ namespace Wordclock.Core.Layout
 		public Pixel GetPixel(int x, int y)
 		{
 			var pixelId = CalculatePixelID(x, y);
-			return _pixels.First(p => p.PixelID == pixelId);
+			return _pixels.First(p => p.PixelId == pixelId);
 		}
 
 		/// <summary>

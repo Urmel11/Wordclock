@@ -9,16 +9,16 @@ namespace Wordclock.Core.Layout
 	{
 		private Color _pixelColor;
 
-		public Pixel(int pixelID)
+		public Pixel(int pixelId)
 		{
 			Clear();
-			PixelID = pixelID;
+			PixelId = pixelId;
 			IsChanged = true;
 		}
 		/// <summary>
-		/// ID of the pixel 
+		/// Id of the pixel 
 		/// </summary>
-		public int PixelID { get; }
+		public int PixelId { get; }
 		
 		/// <summary>
 		/// Gets or sets the color

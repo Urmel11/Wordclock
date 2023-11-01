@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Device.Spi;
 using Wordclock.Core.Layout;
-using Wordclock.Core.Startup;
 
 namespace Wordclock.Core.RenderEngine
 {
@@ -35,7 +34,7 @@ namespace Wordclock.Core.RenderEngine
 
 			foreach (var p in pixelsToRender)
 			{
-				image.SetPixel(p.PixelID, 0, p.PixelColor);
+				image.SetPixel(p.PixelId, 0, p.PixelColor);
 			}
 
 			_device.Update();

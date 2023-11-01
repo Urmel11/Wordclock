@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Wordclock.Core.Layout;
 using Wordclock.Core.RenderEngine;
 
 namespace Wordclock.Core.Plugin
@@ -8,17 +7,13 @@ namespace Wordclock.Core.Plugin
 	public class PluginManager
 	{
 		private IRenderEngine _renderEngine;
-		private IPluginLayoutBuilder _layoutBuilder;
 		private BasePlugin? _activePlugin;
 		private List<BasePlugin> _plugins;
 
-		public PluginManager(IRenderEngine engine, IPluginLayoutBuilder layoutBuilder)
+		public PluginManager(IRenderEngine engine, IEnumerable<BasePlugin> plugins)
 		{
 			_renderEngine = engine;
-			_layoutBuilder = layoutBuilder;
-			_plugins = new List<BasePlugin>();
-
-			RegisterPlugins();
+			_plugins = new List<BasePlugin>(plugins);
 		}
 
 		public void ChangeActivePlugin<T>() where T: BasePlugin
@@ -30,14 +25,14 @@ namespace Wordclock.Core.Plugin
 			_activePlugin?.AttachRenderEngine(_renderEngine);
 		}
 
-		public T? GetPlugin<T>() where T : BasePlugin
+		public BasePlugin? GetActivePlugin()
 		{
-			return (T?)_plugins.Where(x => x.GetType().Equals(typeof(T))).FirstOrDefault();
+			return _activePlugin;
 		}
 
-		private void RegisterPlugins()
+		public T? GetPlugin<T>() where T : BasePlugin
 		{
-			_plugins.Add(new Clock(_layoutBuilder.CreateLayout()));
+			return (T?)_plugins.FirstOrDefault(x => x.GetType().Equals(typeof(T)));
 		}
 	}
 }

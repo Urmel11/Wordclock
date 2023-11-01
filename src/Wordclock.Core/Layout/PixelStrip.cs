@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
@@ -7,7 +8,7 @@ namespace Wordclock.Core.Layout
 	/// <summary>
 	/// Class represents a strip of pixels
 	/// </summary>
-	public class PixelStrip
+	public class PixelStrip : IEnumerable<Pixel>
 	{
 		private readonly List<Pixel> _strip;
 
@@ -43,16 +44,24 @@ namespace Wordclock.Core.Layout
 		/// </summary>
 		/// <returns></returns>
 		public IEnumerable<Pixel> GetChangedPixels() => _strip.Where(x => x.IsChanged);
-		
+
+		public IEnumerator<Pixel> GetEnumerator()
+		{
+			return _strip.GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return _strip.GetEnumerator();
+		}
+
 		/// <summary>
 		/// Returns a value which is indicating if the strip has changed
 		/// </summary>
 		public bool IsChanged => _strip.Any(x => x.IsChanged);
-		
-		/// <summary>
-		/// Returns the current strip
-		/// </summary>
-		/// <returns></returns>
-		public IReadOnlyList<Pixel> Strip =>_strip.AsReadOnly();
+
+		public Pixel this[int index] => _strip[index];
+
+		public int Count => _strip.Count;
 	}
 }

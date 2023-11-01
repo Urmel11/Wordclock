@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Wordclock.Core.Layout
 {
@@ -7,10 +8,11 @@ namespace Wordclock.Core.Layout
 	/// </summary>
 	public class PluginLayout
 	{
-		public PluginLayout(Matrix matrix, PixelStrip minutes)
+		public PluginLayout(Matrix matrix, PixelStrip minutes, Ambilight ambilight)
 		{
 			Minutes = minutes;
 			Matrix = matrix;
+			Ambilight = ambilight;
 		}
 		
 		/// <summary>
@@ -20,6 +22,7 @@ namespace Wordclock.Core.Layout
 		{
 			Matrix.AcceptChanges();
 			Minutes.AcceptChanges();
+			Ambilight.AcceptChanges();
 		}
 		
 		/// <summary>
@@ -28,12 +31,9 @@ namespace Wordclock.Core.Layout
 		/// <returns></returns>
 		public IEnumerable<Pixel> GetChangedPixels()
 		{
-			var result = new List<Pixel>();
-			
-			result.AddRange(Minutes.GetChangedPixels());
-			result.AddRange(Matrix.GetChangedPixels());
-
-			return result;
+			return Matrix.GetChangedPixels()
+				.Concat(Minutes.GetChangedPixels())
+				.Concat(Ambilight.GetChangedPixels());
 		}
 		
 		/// <summary>
@@ -43,15 +43,18 @@ namespace Wordclock.Core.Layout
 		{
 			Matrix.Clear();
 			Minutes.Clear();
+			Ambilight.Clear();
 		}
 		
 		public Matrix Matrix { get; }
 
 		public PixelStrip Minutes { get; }
 
+		public Ambilight Ambilight { get; }
+
 		/// <summary>
 		/// Gets a valud which is indicating if the layout changed
 		/// </summary>
-		public bool IsChanged => Matrix.IsChanged || Minutes.IsChanged;
+		public bool IsChanged => Matrix.IsChanged || Minutes.IsChanged || Ambilight.IsChanged;
 	}
 }
