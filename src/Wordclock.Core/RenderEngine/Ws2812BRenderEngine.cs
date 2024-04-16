@@ -9,7 +9,7 @@ namespace Wordclock.Core.RenderEngine
 	/// <summary>
 	/// Render engine uses wrapper functionality to communicate with the WS281x controller
 	/// </summary>
-	class Ws2812BRenderEngine : IRenderEngine, IDisposable
+	public class Ws2812BRenderEngine : IRenderEngine, IDisposable
 	{
 		private SpiDevice _spiDevice;
 		private Ws2812b _device;

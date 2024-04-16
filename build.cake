@@ -4,11 +4,11 @@ var target = Argument("target", "Publish");
 var configuration = Argument("configuration", "Release");
 
 var deploymentTarget = Argument("deyploymentTarget", "raspberrypi");
-var deploymentPath = Argument("deyploymentPath", "/home/pi/clock");
-var deyplomentUser = Argument("user", "pi");
+var deploymentPath = Argument("deyploymentPath", "/home/raspberry/clock");
+var deyplomentUser = Argument("user", "raspberry");
 var deyplomentPassword = Argument("password", "pi");
 
-var projectFile = "./src/Wordclock.App/Wordclock.App.csproj";
+var projectFile = "./src/Wordclock.Ui.Web/Wordclock.Ui.Web.csproj";
 var outputDirectory = "./artifacts";
 
 //////////////////////////////////////////////////////////////////////
@@ -25,11 +25,12 @@ Task("Publish")
     .IsDependentOn("Clean")
     .Does(() =>
 {
-    DotNetCorePublish(projectFile, new DotNetCorePublishSettings
+    DotNetPublish(projectFile, new DotNetPublishSettings
     {
         Configuration = configuration,
 		Runtime = "linux-arm64",
-		PublishSingleFile=true,
+		SelfContained = true,
+		PublishSingleFile = true,
 		OutputDirectory=outputDirectory,
     });
 

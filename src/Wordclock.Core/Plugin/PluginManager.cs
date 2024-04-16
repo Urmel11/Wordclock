@@ -30,6 +30,14 @@ namespace Wordclock.Core.Plugin
 			return _activePlugin;
 		}
 
+		public bool IsPluginActive<T>() where T : BasePlugin
+		{
+			if(_activePlugin is null)
+				return false;
+
+			return _activePlugin.GetType().Equals(typeof(T));
+		}
+
 		public T? GetPlugin<T>() where T : BasePlugin
 		{
 			return (T?)_plugins.FirstOrDefault(x => x.GetType().Equals(typeof(T)));
