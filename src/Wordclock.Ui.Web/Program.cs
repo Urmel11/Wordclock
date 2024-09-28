@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.DataProtection;
 using Wordclock.Core;
 using Wordclock.Core.Plugin;
 using Wordclock.Core.RenderEngine;
@@ -8,9 +7,20 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddWordclock()
-				.WithPluginsOfAssembly<Clock>()
-				.WithRenderEngine<NoOpRenderEngine>();
+
+if(builder.Environment.IsDevelopment())
+{
+    builder.Services.AddWordclock()
+        .WithPluginsOfAssembly<Clock>()
+        .WithRenderEngine<NoOpRenderEngine>();
+}
+else
+{
+    builder.Services.AddWordclock()
+        .WithPluginsOfAssembly<Clock>()
+        .WithRenderEngine<Ws2812BRenderEngine>();
+}
+	
 
 var app = builder.Build();
 

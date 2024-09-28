@@ -1,11 +1,11 @@
-#addin "Cake.Putty&version=1.5.1"
+#addin "Cake.Putty&version=1.7.0"
 
 var target = Argument("target", "Publish");
 var configuration = Argument("configuration", "Release");
 
 var deploymentTarget = Argument("deyploymentTarget", "raspberrypi");
-var deploymentPath = Argument("deyploymentPath", "/home/raspberry/clock");
-var deyplomentUser = Argument("user", "raspberry");
+var deploymentPath = Argument("deyploymentPath", "/home/pi/clock");
+var deyplomentUser = Argument("user", "pi");
 var deyplomentPassword = Argument("password", "pi");
 
 var projectFile = "./src/Wordclock.Ui.Web/Wordclock.Ui.Web.csproj";
