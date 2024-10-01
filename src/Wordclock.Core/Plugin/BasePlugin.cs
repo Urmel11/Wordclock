@@ -20,6 +20,8 @@ namespace Wordclock.Core.Plugin
 			_renderEngine = engine;
 			_cancellationTokenSource = new CancellationTokenSource();
 
+			Layout.Clear();
+			Render();
 			Execute(_cancellationTokenSource.Token);
 		}
 
@@ -32,6 +34,7 @@ namespace Wordclock.Core.Plugin
 		public void Render()
 		{
 			_renderEngine?.Render(Layout.GetChangedPixels());
+			Layout.AcceptChanges();
 		}
 
 		protected abstract Task Execute(CancellationToken cancellationToken);

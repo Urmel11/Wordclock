@@ -14,7 +14,7 @@ namespace Wordclock.Core.Layout
 			Matrix = matrix;
 			Ambilight = ambilight;
 		}
-		
+
 		/// <summary>
 		/// Accpet the changes
 		/// </summary>
@@ -24,7 +24,7 @@ namespace Wordclock.Core.Layout
 			Minutes.AcceptChanges();
 			Ambilight.AcceptChanges();
 		}
-		
+
 		/// <summary>
 		/// Returns the changed pixels of the layout
 		/// </summary>
@@ -35,7 +35,7 @@ namespace Wordclock.Core.Layout
 				.Concat(Minutes.GetChangedPixels())
 				.Concat(Ambilight.GetChangedPixels());
 		}
-		
+
 		/// <summary>
 		/// Clears the pixels
 		/// </summary>
@@ -45,7 +45,7 @@ namespace Wordclock.Core.Layout
 			Minutes.Clear();
 			Ambilight.Clear();
 		}
-		
+
 		public Matrix Matrix { get; }
 
 		public PixelStrip Minutes { get; }

@@ -1,49 +1,49 @@
-﻿using Microsoft.AspNetCore.Components;
-using System.Drawing;
+﻿using System.Drawing;
+using Microsoft.AspNetCore.Components;
 using Wordclock.Core.Plugin;
 
 namespace Wordclock.Ui.Web.Pages
 {
-    public partial class Clock
-    {
-        [Inject]
-        public PluginManager? PluginManager { get; set; }
+	public partial class Clock
+	{
+		[Inject]
+		public PluginManager? PluginManager { get; set; }
 
-        public bool ClockIsActive => PluginManager?.IsPluginActive<Core.Plugin.Clock>() ?? false;
-        
-        private void OnClockStatusToggled()
-        {
-            PluginManager?.ChangeActivePlugin<Core.Plugin.Clock>();
-        }
-        
-        public string GetClockColor()
-        {
-            var clock = PluginManager?.GetPlugin<Core.Plugin.Clock>();
-            if (clock is null)
-                return "#FFFFFF";
+		public bool ClockIsActive => PluginManager?.IsPluginActive<Core.Plugin.Clock.Clock>() ?? false;
 
-            var color = clock.GetClockColor();
+		private void OnClockStatusToggled()
+		{
+			PluginManager?.ChangeActivePlugin<Core.Plugin.Clock.Clock>();
+		}
 
-            return $"#{color.R:X2}{color.G:X2}{color.B:X2}";
-        }
-        private void OnColorChanged(ChangeEventArgs e)
-        {
-            if (e is null || e.Value is null)
-                return;
+		public string GetClockColor()
+		{
+			var clock = PluginManager?.GetPlugin<Core.Plugin.Clock.Clock>();
+			if (clock is null)
+				return "#FFFFFF";
 
-            var clock = PluginManager?.GetPlugin<Core.Plugin.Clock>();
-            if (clock is null)
-                return;
+			var color = clock.GetClockColor();
 
-           var hex = e.Value.ToString()!.TrimStart('#');
+			return $"#{color.R:X2}{color.G:X2}{color.B:X2}";
+		}
+		private void OnColorChanged(ChangeEventArgs e)
+		{
+			if (e is null || e.Value is null)
+				return;
 
-            // Parse RGB components
-            int r = int.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-            int g = int.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-            int b = int.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+			var clock = PluginManager?.GetPlugin<Core.Plugin.Clock.Clock>();
+			if (clock is null)
+				return;
 
-            clock.SetClockColor(Color.FromArgb(r, g, b));
-        }
+			var hex = e.Value.ToString()!.TrimStart('#');
 
-    }
+			// Parse RGB components
+			int r = int.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+			int g = int.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+			int b = int.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+
+			clock.SetClockColor(Color.FromArgb(r, g, b));
+		}
+
+	}
 }

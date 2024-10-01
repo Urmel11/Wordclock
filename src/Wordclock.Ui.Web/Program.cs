@@ -1,5 +1,5 @@
 using Wordclock.Core;
-using Wordclock.Core.Plugin;
+using Wordclock.Core.Plugin.Clock;
 using Wordclock.Core.RenderEngine;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,19 +8,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-if(builder.Environment.IsDevelopment())
+if (builder.Environment.IsDevelopment())
 {
-    builder.Services.AddWordclock()
-        .WithPluginsOfAssembly<Clock>()
-        .WithRenderEngine<NoOpRenderEngine>();
+	builder.Services.AddWordclock()
+		.WithPluginsOfAssembly<Clock>()
+		.WithRenderEngine<NoOpRenderEngine>();
 }
 else
 {
-    builder.Services.AddWordclock()
-        .WithPluginsOfAssembly<Clock>()
-        .WithRenderEngine<Ws2812BRenderEngine>();
+	builder.Services.AddWordclock()
+		.WithPluginsOfAssembly<Clock>()
+		.WithRenderEngine<Ws2812BRenderEngine>();
 }
-	
+
 
 var app = builder.Build();
 

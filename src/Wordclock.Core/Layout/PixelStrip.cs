@@ -27,7 +27,7 @@ namespace Wordclock.Core.Layout
 		/// Sets the color on all pixels in the strip
 		/// </summary>
 		/// <param name="newColor">Color to set</param>
-		public void ChangeColor(Color newColor) => _strip.ForEach(x=> x.PixelColor = newColor);
+		public void ChangeColor(Color newColor) => _strip.ForEach(x => x.PixelColor = newColor);
 
 		/// <summary>
 		/// Accept the changes
@@ -38,7 +38,7 @@ namespace Wordclock.Core.Layout
 		/// Reset the color of all pixels
 		/// </summary>
 		public void Clear() => _strip.ForEach(pixel => pixel.Clear());
-		
+
 		/// <summary>
 		/// Returns the changed pixels
 		/// </summary>

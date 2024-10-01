@@ -10,7 +10,7 @@ namespace Wordclock.Ui.Web.Pages
 
 		public void OnClockClicked()
 		{
-			PluginManager?.ChangeActivePlugin<Core.Plugin.Clock>();
+			PluginManager?.ChangeActivePlugin<Core.Plugin.Clock.Clock>();
 		}
 
 		public void OnKnightRiderClicked()

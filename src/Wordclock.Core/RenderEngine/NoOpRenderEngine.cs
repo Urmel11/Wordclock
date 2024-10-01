@@ -7,7 +7,7 @@ namespace Wordclock.Core.RenderEngine
 	{
 		public void Render(IEnumerable<Pixel> pixelsToRender)
 		{
-			
+
 		}
 	}
 }

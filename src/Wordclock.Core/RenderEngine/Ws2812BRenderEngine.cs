@@ -1,7 +1,7 @@
-﻿using Iot.Device.Ws28xx;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Device.Spi;
+using Iot.Device.Ws28xx;
 using Wordclock.Core.Layout;
 
 namespace Wordclock.Core.RenderEngine

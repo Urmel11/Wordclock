@@ -19,7 +19,7 @@ namespace Wordclock.Core.Layout
 		/// Id of the pixel 
 		/// </summary>
 		public int PixelId { get; }
-		
+
 		/// <summary>
 		/// Gets or sets the color
 		/// </summary>
@@ -27,8 +27,8 @@ namespace Wordclock.Core.Layout
 		{
 			get => _pixelColor;
 			set
-			{ 
-				if(!value.Equals(_pixelColor))
+			{
+				if (!value.Equals(_pixelColor))
 				{
 					_pixelColor = value;
 					IsChanged = true;
@@ -36,8 +36,12 @@ namespace Wordclock.Core.Layout
 			}
 		}
 
-		public void Clear() => PixelColor = Color.Empty;
-		
+		public void Clear()
+		{
+			_pixelColor = Color.Empty;
+			IsChanged = true;
+		}
+
 		/// <summary>
 		/// Indicates if the object changed
 		/// </summary>
@@ -46,6 +50,6 @@ namespace Wordclock.Core.Layout
 		/// <summary>
 		/// Accept all the changes
 		/// </summary>
-		public void AcceptChanges() => 	IsChanged = false;
+		public void AcceptChanges() => IsChanged = false;
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 
-namespace Wordclock.Core.Plugin
+namespace Wordclock.Core.Plugin.Clock
 {
 	/// <summary>
 	/// Interface which provides convertes the time in words

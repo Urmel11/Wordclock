@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Wordclock.Core.Layout;
 
-namespace Wordclock.Core.Plugin
+namespace Wordclock.Core.Plugin.Clock
 {
 	/// <summary>
 	/// Plugin for showing the time 
@@ -52,7 +52,7 @@ namespace Wordclock.Core.Plugin
 				//No update is required
 				return;
 			}
-			
+
 			Layout.Clear();
 
 			//The clock shows the time in a step of 5 minutes
@@ -66,15 +66,15 @@ namespace Wordclock.Core.Plugin
 			{
 				hour = _wordProvider.GetHour((time.Hour % 12), time.Minute);
 			}
-						
-			if(_printPrefix)
+
+			if (_printPrefix)
 			{
 				Layout.Matrix.SetPixelColor(_wordProvider.GetPrefix(), GetClockColor());
 			}
-			
+
 			Layout.Matrix.SetPixelColor(hour, GetClockColor());
 			Layout.Matrix.SetPixelColor(minutes, GetClockColor());
-						
+
 			SetDetailMinutes(time.Minute % 5);
 
 			if (time.Minute < 5)
@@ -91,7 +91,7 @@ namespace Wordclock.Core.Plugin
 		/// </summary>
 		/// <param name="minutes">Minutes</param>
 		private void SetDetailMinutes(int minutes)
-		{	
+		{
 			for (int i = 0; i <= minutes - 1; i++)
 			{
 				Layout.Minutes[i].PixelColor = GetClockColor();
@@ -107,7 +107,7 @@ namespace Wordclock.Core.Plugin
 		{
 			return (_oldMinute != timeToRender.Minute);
 		}
-		
+
 		public bool GetShowPrefix()
 		{
 			return _printPrefix;
@@ -125,7 +125,7 @@ namespace Wordclock.Core.Plugin
 		{
 			_oldMinute = -1;
 
-			while(!cancellationToken.IsCancellationRequested)
+			while (!cancellationToken.IsCancellationRequested)
 			{
 				SetTime(DateTime.Now);
 

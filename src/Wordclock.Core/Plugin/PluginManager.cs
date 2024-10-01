@@ -16,7 +16,7 @@ namespace Wordclock.Core.Plugin
 			_plugins = new List<BasePlugin>(plugins);
 		}
 
-		public void ChangeActivePlugin<T>() where T: BasePlugin
+		public void ChangeActivePlugin<T>() where T : BasePlugin
 		{
 			_activePlugin?.DetachRenderEngine();
 
@@ -32,7 +32,7 @@ namespace Wordclock.Core.Plugin
 
 		public bool IsPluginActive<T>() where T : BasePlugin
 		{
-			if(_activePlugin is null)
+			if (_activePlugin is null)
 				return false;
 
 			return _activePlugin.GetType().Equals(typeof(T));

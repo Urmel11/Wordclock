@@ -14,6 +14,6 @@
 			PixelId = id;
 		}
 
-		public int PixelId { get;  }
+		public int PixelId { get; }
 	}
 }

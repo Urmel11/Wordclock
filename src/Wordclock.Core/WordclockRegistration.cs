@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
+using Wordclock.Core.Layout;
 using Wordclock.Core.Plugin;
 using Wordclock.Core.RenderEngine;
 
@@ -26,6 +27,8 @@ namespace Wordclock.Core
 		public IWordclockRegistration WithRenderEngine<T>() where T : class, IRenderEngine
 		{
 			_serviceCollection.AddSingleton<IRenderEngine, T>();
+			_serviceCollection.Decorate<IRenderEngine>((x, y) => new PowerStateRenderEngineDecorator(x, y.GetRequiredService<ILayoutFactory>()));
+			_serviceCollection.AddSingleton(x => (PowerStateRenderEngineDecorator)x.GetRequiredService<IRenderEngine>());
 
 			return this;
 		}

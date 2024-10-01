@@ -8,7 +8,7 @@ namespace Wordclock.Core.Layout
 	/// Class represents the matrix
 	/// </summary>
 	public class Matrix
-	{	
+	{
 		private readonly List<Pixel> _pixels;
 
 		/// <summary>
@@ -18,8 +18,8 @@ namespace Wordclock.Core.Layout
 		/// <param name="height">Height</param>
 		public Matrix(int width, int height)
 		{
-			Width	= width;
-			Height	= height;
+			Width = width;
+			Height = height;
 
 			_pixels = new List<Pixel>();
 			InitializePixels();
@@ -64,7 +64,7 @@ namespace Wordclock.Core.Layout
 		/// Accept the changes
 		/// </summary>
 		public void AcceptChanges() => _pixels.ForEach(x => x.AcceptChanges());
-		
+
 		/// <summary>
 		/// Reset the color of all pixels
 		/// </summary>
@@ -75,13 +75,13 @@ namespace Wordclock.Core.Layout
 		/// </summary>
 		/// <returns></returns>
 		public IEnumerable<Pixel> GetChangedPixels() => _pixels.Where(x => x.IsChanged);
-			
+
 		/// <summary>
 		/// Initializes the pixels in the matrix
 		/// </summary>
 		private void InitializePixels()
-		{			
-			for(int i=0; i<= Height -1; i++)
+		{
+			for (int i = 0; i <= Height - 1; i++)
 			{
 				for (int k = 0; k <= Width - 1; k++)
 					_pixels.Add(new Pixel(CalculatePixelID(k, i)));
@@ -96,9 +96,9 @@ namespace Wordclock.Core.Layout
 		/// <param name="y">The y coordinate.</param>
 		private int CalculatePixelID(int x, int y)
 		{
-			if(y % 2 == 0)
+			if (y % 2 == 0)
 				return (y * Width) + x;
-		
+
 			return (y * Width) + (Width - x - 1);
 		}
 

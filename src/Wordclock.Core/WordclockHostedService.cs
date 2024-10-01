@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.Hosting;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
 using Wordclock.Core.Plugin;
+using Wordclock.Core.Plugin.Clock;
 
 namespace Wordclock.Core
 {
@@ -14,7 +15,7 @@ namespace Wordclock.Core
 		{
 			_pluginManager = pluginManager ?? throw new ArgumentNullException(nameof(pluginManager));
 		}
-		
+
 		protected override Task ExecuteAsync(CancellationToken stoppingToken)
 		{
 			_pluginManager.ChangeActivePlugin<Clock>();

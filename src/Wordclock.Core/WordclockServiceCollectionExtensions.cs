@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Wordclock.Core.Layout;
 using Wordclock.Core.Plugin;
+using Wordclock.Core.Plugin.Clock;
 
 namespace Wordclock.Core
 {

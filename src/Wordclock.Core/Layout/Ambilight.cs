@@ -11,14 +11,14 @@ namespace Wordclock.Core.Layout
 		public Ambilight(PixelStrip left, PixelStrip right)
 		{
 			Left = left;
-			Right = right;		
+			Right = right;
 		}
-		
+
 		public IEnumerable<Pixel> GetChangedPixels()
 		{
 			return Left.GetChangedPixels().Concat(Right.GetChangedPixels());
 		}
-		
+
 		public void AcceptChanges()
 		{
 			Left.AcceptChanges();

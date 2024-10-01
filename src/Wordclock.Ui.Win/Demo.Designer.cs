@@ -30,6 +30,7 @@
 		{
 			btnClock = new Button();
 			btnKnightRider = new Button();
+			btnTogglePowerState = new Button();
 			SuspendLayout();
 			// 
 			// btnClock
@@ -52,14 +53,25 @@
 			btnKnightRider.UseVisualStyleBackColor = true;
 			btnKnightRider.Click += btnKnightRider_Click;
 			// 
-			// Form1
+			// btnTogglePowerState
+			// 
+			btnTogglePowerState.Location = new Point(962, 126);
+			btnTogglePowerState.Name = "btnTogglePowerState";
+			btnTogglePowerState.Size = new Size(141, 23);
+			btnTogglePowerState.TabIndex = 2;
+			btnTogglePowerState.Text = "Toggle PowerState";
+			btnTogglePowerState.UseVisualStyleBackColor = true;
+			btnTogglePowerState.Click += btnTogglePowerState_Click;
+			// 
+			// Demo
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1309, 679);
+			Controls.Add(btnTogglePowerState);
 			Controls.Add(btnKnightRider);
 			Controls.Add(btnClock);
-			Name = "Form1";
+			Name = "Demo";
 			Text = "Form1";
 			ResumeLayout(false);
 		}
@@ -68,5 +80,6 @@
 
 		private Button btnClock;
 		private Button btnKnightRider;
-	}
+        private Button btnTogglePowerState;
+    }
 }

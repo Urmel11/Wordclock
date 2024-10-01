@@ -1,8 +1,7 @@
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WindowsFormsLifetime;
 using Wordclock.Core;
-using Wordclock.Core.Plugin;
+using Wordclock.Core.Plugin.Clock;
 
 namespace Wordclock.Ui.Win
 {
